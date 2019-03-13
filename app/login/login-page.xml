@@ -1,0 +1,12 @@
+<Page actionBarHidden="true" loaded="loaded">
+    <!--<ActionBar title="Assetti"></ActionBar>-->
+    <FlexboxLayout>
+        <StackLayout class="form">
+            <Image src="~/images/assetti.jpg" />
+            <Label class="h1" text="Assetti Mobile" />
+            <TextField id="email" text="{{ email }}" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" class="input input-border" />
+            <TextField secure="true" text="{{ password }}" hint="Password" class="input input-border" />
+            <Button text="Sign in" class="btn btn-primary" tap="onTap" />
+        </StackLayout>
+    </FlexboxLayout>
+</Page>
