@@ -18,7 +18,6 @@
 
     </ActionBar>
 
-
     <TabView id="tabViewContainer">
         <TabViewItem title="Proximity">
             <StackLayout>
