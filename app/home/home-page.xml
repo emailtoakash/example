@@ -25,6 +25,6 @@
 
     <GridLayout class="page-content">
         <Label class="page-icon fa" text="&#xf015;"></Label>
-        <Label class="page-placeholder" text=" Otto"></Label>
+        <Label class="page-placeholder" text="Elias was here too"></Label>
     </GridLayout>
 </Page>
