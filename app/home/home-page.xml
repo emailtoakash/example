@@ -1,6 +1,4 @@
-<Page
-    class="page"
-    navigatingTo="onNavigatingTo"  
+<Page class="page" navigatingTo="onNavigatingTo" 
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar class="action-bar">
@@ -14,17 +12,47 @@
         NavigationButton as a side-drawer button in iOS is not possible,
         because its function is to always navigate back in the application.
         -->
-        <ActionItem icon="res://navigation/menu" 
-            android:visibility="collapsed" 
-            tap="onDrawerButtonTap"
-            ios.position="left">
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left">
         </ActionItem>
         <Label class="action-bar-title" text="Assetti Notes"></Label>
-        
+
     </ActionBar>
 
-    <GridLayout class="page-content">
-        <Label class="page-icon fa" text="&#xf015;"></Label>
-        <Label class="page-placeholder" text=" Akash"></Label>
-    </GridLayout>
+
+    <TabView id="tabViewContainer">
+        <TabViewItem title="Proximity">
+            <StackLayout>
+                <FlexboxLayout flexDirection="column" backgroundColor="lightgray">
+                    <Label text="Label 2" backgroundColor="red"/>
+                    <Label text="Label 2" backgroundColor="green"/>
+                    <Label text="Label 3" backgroundColor="blue"/>
+                    <Label text="Label 4" backgroundColor="yellow"/>
+                </FlexboxLayout>∏
+            </StackLayout>
+        </TabViewItem>
+        <TabViewItem title="Urgent">
+            <StackLayout>
+                <FlexboxLayout flexDirection="column" backgroundColor="lightgray">
+                    <Label text="Label 2" backgroundColor="red"/>
+                    <Label text="Label 2" backgroundColor="green"/>
+                    <Label text="Label 3" backgroundColor="blue"/>
+                    <Label text="Label 4" backgroundColor="yellow"/>
+                </FlexboxLayout>∏
+            </StackLayout>
+        </TabViewItem>
+        <TabViewItem title="My Notes">
+            <StackLayout>
+                <FlexboxLayout flexDirection="column" backgroundColor="lightgray">
+                    <Label text="Label 2" backgroundColor="red"/>
+                    <Label text="Label 2" backgroundColor="green"/>
+                    <Label text="Label 3" backgroundColor="blue"/>
+                    <Label text="Label 4" backgroundColor="yellow"/>
+                </FlexboxLayout>∏
+            </StackLayout>
+        </TabViewItem>
+    </TabView>
+
+
+
+
 </Page>
