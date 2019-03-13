@@ -12,3 +12,21 @@
 ActionBar .fa {
     padding: 40px 40px 40px 0;
 }
+.btn {
+    font-size: 18;
+}
+
+/* Application-wide CSS thingies should go here. */
+
+ActionBar {
+    background-color: #0a7ca2;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #0a7ca2;
+    color: #ffffff;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10;
+}
