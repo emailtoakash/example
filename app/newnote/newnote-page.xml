@@ -1,7 +1,9 @@
 <Page
     class="page"
     navigatingTo="onNavigatingTo"  
-    xmlns="http://schemas.nativescript.org/tns.xsd">
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    loaded="mainload">
+    
 
     <ActionBar class="action-bar">
         <!-- 
@@ -19,11 +21,20 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label class="action-bar-title" text="Browse"></Label>
+        <Label class="action-bar-title" text="New Note"></Label>
     </ActionBar>
-
-    <GridLayout class="page-content">
-        <Label class="page-icon fa" text="&#xf1ea;"></Label>
-        <Label class="page-placeholder" text="<!-- Add Note! -->"></Label>
-    </GridLayout>
+    <GridLayout rows="*,auto">
+        <FlexboxLayout id="a" class="form" row="0" flexDirection="column">
+            <TextField id="notetitle" hint="Title" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border" />
+            <TextView id="description" hint="Description" autocapitalizationType="sentences" style="color: gray" class="input" />
+        </FlexboxLayout>
+        <FlexboxLayout id="b" class="form hidden" row="0" flexDirection="column">
+            <TextField id="notetitle" hint="Hello" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border" />
+            <TextView id="description" hint="World!" autocapitalizationType="sentences" style="color: gray" class="input" />
+        </FlexboxLayout>
+        <GridLayout row="1" columns="*,auto,*">
+            <Button col="1" text="&#xf03e;" class="roundbutton fa"/>
+            <Button col="2" text="NEXT" class="btn" tap="changeTab"/>
+        </GridLayout>
+    </GridLayout>   
 </Page>
