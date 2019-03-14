@@ -19,11 +19,45 @@
             tap="onDrawerButtonTap"
             ios.position="left">
         </ActionItem>
-        <Label class="action-bar-title" text="Browse"></Label>
+        <Label class="action-bar-title" text="New Note"></Label>
     </ActionBar>
 
-    <GridLayout class="page-content">
-        <Label class="page-icon fa" text="&#xf1ea;"></Label>
-        <Label class="page-placeholder" text="<!-- Add Note! -->"></Label>
-    </GridLayout>
+    <TabView loaded="onLoaded" selectedIndex="{{tabSelectedIndex}}">
+        <TabViewItem title="Basics">
+            <GridLayout rows="*,auto">
+                <StackLayout class="form" row="0">
+                    <TextField id="notetitle" hint="Title" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border" />
+                    <TextView id="description" hint="Description" autocapitalizationType="sentences" style="color: gray" class="input" />
+                </StackLayout>
+                <GridLayout row="1" columns="*,auto,*">
+                    <Button col="1" text="&#xf03e;" class="roundbutton fa"/>
+                    <Button col="2" text="NEXT" class="btn" tap="changeTab"/>
+                </GridLayout>
+            </GridLayout>   
+        </TabViewItem>
+        <TabViewItem title="Details">
+            <GridLayout rows="*,auto">
+                <GridLayout row="1" columns="*,auto,*">
+                    <Button col="1" text="&#xf03e;" class="roundbutton fa"/>
+                    <Button col="2" text="NEXT" class="btn" tap="changeTab"/>
+                </GridLayout>
+            </GridLayout>  
+        </TabViewItem>
+        <TabViewItem title="More">
+            <GridLayout rows="*,auto">
+                <GridLayout row="1" columns="*,auto,*">
+                    <Button col="1" text="&#xf03e;" class="roundbutton fa"/>
+                    <Button col="2" text="NEXT" class="btn" tap="changeTab"/>
+                </GridLayout>
+            </GridLayout>  
+        </TabViewItem>
+        <TabViewItem title="End">
+            <GridLayout rows="*,auto">
+                <GridLayout row="1" columns="*,auto,*">
+                    <Button col="1" text="&#xf03e;" class="roundbutton fa"/>
+                    <Button col="2" text="NEXT" class="btn" tap="changeTab"/>
+                </GridLayout>
+            </GridLayout>  
+        </TabViewItem>
+    </TabView>
 </Page>
