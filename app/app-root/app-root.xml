@@ -24,15 +24,17 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                         <Label row="0" col="1" text="Home" class="p-r-10" />
                     </GridLayout>
 
-                    
-
                     <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
                         route="search/search-page" title="Search" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf002;" class="fa" />
                         <Label row="0" col="1" text="Search" class="p-r-10" />
                     </GridLayout>
 
-                 
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'New Note' ? ' selected': '') }}"
+                        route="newnote/newnote-page" title="Add Note" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf067;" class="fa" />
+                        <Label row="0" col="1" text="Add Note" class="p-r-10" />
+                    </GridLayout>
 
                     <StackLayout class="hr-light"></StackLayout>
 

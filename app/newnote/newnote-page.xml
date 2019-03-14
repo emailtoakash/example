@@ -24,6 +24,6 @@
 
     <GridLayout class="page-content">
         <Label class="page-icon fa" text="&#xf1ea;"></Label>
-        <Label class="page-placeholder" text="<!-- Akash -->"></Label>
+        <Label class="page-placeholder" text="<!-- Add Note! -->"></Label>
     </GridLayout>
 </Page>
