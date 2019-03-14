@@ -1,0 +1,37 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="View Note"></Label>
+
+    </ActionBar>
+
+    <StackLayout orientation="vertical" backgroundColor="#FFFFFF">
+        <GridLayout class="titlebar" columns="auto, auto" rows="auto, auto, auto" height="25%" backgroundColor="#2DB7E6">
+            <Label class="titlelabel1" text="Tenant Alterations for Assetti Oy" row="0" col="0" colSpan="2"/>
+            <Label class="titlelabel2" id="subtitle" text="Samuli Hiltunen, 13.03.2019" row="1" col="0" colSpan="2"/>
+            <Label class="titlelabel2" text="KOy Askonneliö" row="2" col="0"/>
+            <Label class="titlelabel2" text="Assetti Oy" row="2" col="1"/>
+        </GridLayout>
+        <DockLayout class="descbox" height="65%" backgroundColor="#FFFFFF" stretchLastChild="false">
+            <!-- editable="{{ editState }}" text="{{ descText }}" -->
+            <TextView loaded="descShow" class="description" editable="false" text="Customer is hoping to remove the glass wall between open area and negotiation room.
+
+Contractor said that it will take 2 weeks and will cost 2500€." hint="Description" textWrap="true" dock="top" />
+            <Label class="attachments" dock="bottom" text="ATTACHMENTS" />
+        </DockLayout>
+        <Label text="Label 3" height="10%" backgroundColor="#FFFFFF"/>
+    </StackLayout>
+    
+</Page>
