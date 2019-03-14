@@ -49,14 +49,14 @@ export function onNavigatingTo(args: EventData) {
     const page = <Page>args.object;
     const vm = fromObject({
         myTitles: [
-            { title: 'First Title Here' },
-            { title: 'Second Title Here' },
-            { title: 'Third Title Here' },
-            { title: 'Fourth Title Here' },
-            { title: 'Fifth Title Here' },
-            { title: 'Sixth Title Here' },
-            { title: 'Seventh Title Here' },
-            { title: 'Title Number 8 Here' }
+            { title: 'First Title Here', author: 'John Smith'},
+            { title: 'Second Title Here'},
+            { title: 'Third Title Here', author: 'Isaac Newton' },
+            { title: 'Fourth Title Here'},
+            { title: 'Fifth Title Here'},
+            { title: 'Sixth Title Here', author: 'Tex Willer' },
+            { title: 'Seventh Title Here'},
+            { title: 'Title Number 8 Here', author: 'Donald Duck' }
         ]
     });
     page.bindingContext = vm;

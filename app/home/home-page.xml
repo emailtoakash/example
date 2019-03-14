@@ -21,22 +21,22 @@
     <TabView id="tabViewContainer">
         <TabViewItem title="Proximity">
             <ListView items="{{ myTitles }}" itemTap="onItemTap" loaded="{{ onListViewLoaded }}" separatorColor="gray" rowHeight="auto" class="list-group" id="listView" row="2">
-        <ListView.itemTemplate>
-            <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
-            <GridLayout rows="*,*,*" columns="*,auto" class="list-group-item note-list-item">
-                <Label row="0" col="0" colSpan="2" text="{{ title || 'Blablabla...' }}" textWrap="true" class="title"></Label>
-                <Label row="1" col="0" text="Note preview text here..."></Label>
-                <StackLayout row="0" col="1" orientation="horizontal">
-                    <Label text="1"></Label>
-                    <Label text="o" class="icon"></Label>
-                    <Label text="1"></Label>
-                    <Label text="o" class="icon"></Label>
-                </StackLayout>
-                <Label row="2" col="0" text="2018-01-01"></Label>
-                <Label row="2" col="1" text="John Smith"></Label>
-            </GridLayout>
-        </ListView.itemTemplate>
-    </ListView>
+                <ListView.itemTemplate>
+                    <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
+                    <GridLayout rows="*,*,*" columns="*,auto" class="list-group-item note-list-item">
+                        <Label row="0" col="0" colSpan="2" text="{{ title || 'Blablabla...' }}" textWrap="true" class="title"></Label>
+                        <Label row="1" col="0" text="Note preview text here..."></Label>
+                        <StackLayout row="0" col="1" orientation="horizontal">
+                            <Label text="1"></Label>
+                            <Label text="o" class="icon"></Label>
+                            <Label text="1"></Label>
+                            <Label text="o" class="icon"></Label>
+                        </StackLayout>
+                        <Label row="2" col="0" text="2018-01-01"></Label>
+                        <Label row="2" col="1" text="{{ author || 'Anonymous' }}"></Label>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
         </TabViewItem>
         <TabViewItem title="Urgent">
             <StackLayout>
