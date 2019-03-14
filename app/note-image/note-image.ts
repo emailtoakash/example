@@ -31,13 +31,13 @@ export function onTakePictureTap(args: EventData) {
         () => {
             takePicture({ width: width, height: height, keepAspectRatio: keepAspectRatio, saveToGallery: saveToGallery }).
                 then((imageAsset) => {
-                    page.bindingContext.set("cameraImage", imageAsset);
+                    page.bindingContext.set("tns", imageAsset);
                     imageAsset.getImageAsync(function (nativeImage) {
                         let scale = 1;
                         let actualWidth = 0;
                         let actualHeight = 0;
                         if (imageAsset.android) {
-                            // get the current density of the screen (dpi) and divide it by the default one to get the scale
+                            // get the current density of the screen (dpi) and divide it by the default one to get the scale 
                             //scale = nativeImage.getDensity() / android.util.DisplayMetrics.DENSITY_DEFAULT;
                             scale = nativeImage.scale;
                             actualWidth = nativeImage.getWidth();
