@@ -36,6 +36,12 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                         <Label row="0" col="1" text="Add Note" class="p-r-10" />
                     </GridLayout>
 
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Add Image' ? ' selected': '') }}"
+                        route="note-image/note-image" title="Add Image" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf067;" class="fa" />
+                        <Label row="0" col="1" text="Add Image" class="p-r-10" />
+                    </GridLayout>
+
                     <StackLayout class="hr-light"></StackLayout>
 
                     <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
