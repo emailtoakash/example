@@ -8,6 +8,12 @@ platforms/
 *.js
 !webpack.config.js
 
+# Some Sass-compiled files
+app/app.android.css
+app/app.ios.css
+app/views/app-root/app-root.android.css
+app/views/app-root/app-root.ios.css
+
 # Logs
 logs
 *.log
