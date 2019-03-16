@@ -49,6 +49,11 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                         <Label row="0" col="0" text="&#xf013;" class="fa" />
                         <Label row="0" col="1" text="Settings" class="p-r-10" />
                     </GridLayout>
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Note-View' ? ' selected': '') }}"
+                        route="note-view/note-view" title="Note-View" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf013;" class="fa" />
+                        <Label row="0" col="1" text="Note-View" class="p-r-10" />
+                    </GridLayout>
                 </StackLayout>
             </ScrollView>
         </GridLayout>
