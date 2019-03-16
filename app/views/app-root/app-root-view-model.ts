@@ -1,7 +1,7 @@
 import { Observable } from "tns-core-modules/data/observable";
 
-import { ObservableProperty } from "../shared/observable-property-decorator";
-import { SelectedPageService } from "../shared/selected-page-service";
+import { ObservableProperty } from "~/shared/observable-property-decorator";
+import { SelectedPageService } from "~/shared/selected-page-service";
 
 export class AppRootViewModel extends Observable {
     @ObservableProperty() selectedPage: string;
