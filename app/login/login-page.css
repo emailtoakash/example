@@ -1,0 +1,22 @@
+FlexboxLayout {
+    justify-content: center;
+    align-items: center;
+}
+
+StackLayout {
+    width: 80%;
+}
+
+Image {
+    height: 20%;
+}
+
+.h1 {
+    margin: 20 auto;
+    text-align: center;
+    font-size: 30%;
+}
+
+Button, TextField {
+    margin-bottom: 10;
+}  
