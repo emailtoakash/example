@@ -6,12 +6,14 @@ import { NewNoteViewModel } from "./newnote-view-model";
 import { takePicture, requestPermissions } from 'nativescript-camera';
 import { android }from 'tns-core-modules/application';
 import { View } from 'tns-core-modules/ui/core/view';
+import { request } from 'tns-core-modules/http';
 
-let page, currentTab;
+let page, currentTab, nextButton;
 
 export function onNavigatingTo(args: NavigatedData) {
     page = <Page>args.object;
     
+    nextButton = page.getViewById("nextButton");
     const properties = ["Skinnarila", "Sammonlahti", "Leiri", "Keskusta"];
     let viewModel = new Observable();
     viewModel.set("items", properties);
@@ -27,17 +29,39 @@ export function onDrawerButtonTap(args: EventData) {
 }
 
 export function changeTab(args) {
+    let button = args.object;
     let tab = page.getViewById(currentTab);
     if (currentTab === "a") {
         let nexttab = page.getViewById("b");
         tab.className = "form hidden";
         nexttab.className = "form";
         currentTab = "b";
-    } else {
+        nextButton.text = "SAVE";
+    } else if (button.id == "nextButton") { // Current tab b, user pressed "SAVE" button
+        const title = page.getViewById("notetitle").text;
+        const desc = page.getViewById("description").text;
+        console.log("Sending the note to Assetti...");
+        request({
+            url: "https://trial.assetti.pro/api/v2/notes?locale=EN&limit=2&offset=0",
+            method: "POST",
+            headers: { "Content-Type": "application/json" , "Authorization" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBa2FzaC5TaW5naGFsQHN0dWRlbnQubHV0LmZpIiwiYXVkIjoiNEIxRDQ2OTAtQkQ5Qy00N0RGLUEzM0MtMTMzRUUyNzBEQTM5IiwiaWF0IjoxNTUyNzI3NzQyfQ.QRLfDQvvGT9wcWlelG4vPl5YcCaaJZbirBNzCZDYidQ" },
+            content: JSON.stringify({
+                title: title,
+                comment: desc
+            })
+        }).then((response) => {
+            const result = response.content.toJSON();
+            console.log(result);
+        }, (e) => {
+            console.log("Error has happened");
+        });
+        console.log("Note sent (supposedly)");
+    } else { // Current tab b, user pressed "BACK" button
         let nexttab = page.getViewById("a");
         tab.className = "form hidden";
         nexttab.className = "form";
         currentTab = "a";
+        nextButton.text = "NEXT";
     }
 }
 export function onTakePictureTap(args: EventData) {
