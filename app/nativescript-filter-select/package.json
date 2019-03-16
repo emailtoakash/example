@@ -1,0 +1,86 @@
+{
+  "_from": "nativescript-filter-select@^1.2.9",
+  "_id": "nativescript-filter-select@1.2.9",
+  "_inBundle": false,
+  "_integrity": "sha512-xL1qKnLwzL2vQUSIPheGh79N9OY08XNpYlb+seqJSWoxVVEyjB99zADGIr/p6r95uVLLyNLv/yM4ZP9Vblh4JQ==",
+  "_location": "/nativescript-filter-select",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "nativescript-filter-select@^1.2.9",
+    "name": "nativescript-filter-select",
+    "escapedName": "nativescript-filter-select",
+    "rawSpec": "^1.2.9",
+    "saveSpec": null,
+    "fetchSpec": "^1.2.9"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nativescript-filter-select/-/nativescript-filter-select-1.2.9.tgz",
+  "_shasum": "47f21b5b6828785da53e6c12e9176e74bafdf5b6",
+  "_spec": "nativescript-filter-select@^1.2.9",
+  "_where": "C:\\Users\\OMISTAJA\\Desktop\\std\\rsp\\example",
+  "author": {
+    "name": "Moayad Al-Najdawi",
+    "email": "moayad@codeobia.com"
+  },
+  "bugs": {
+    "url": "https://github.com/moayadnajd/nativescript-filter-select/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Your awesome NativeScript plugin for select and filter items for a list.",
+  "devDependencies": {
+    "prompt": "~1.0.0",
+    "rimraf": "~2.5.0",
+    "tns-core-modules": "^4.0.0",
+    "tns-platform-declarations": "^4.0.1",
+    "typescript": "~2.2.1"
+  },
+  "homepage": "https://github.com/moayadnajd/nativescript-filter-select",
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "Android",
+    "iOS",
+    "filter",
+    "select",
+    "CodeObia",
+    "tags",
+    "angular",
+    "search"
+  ],
+  "license": "MIT",
+  "main": "filter-select",
+  "name": "nativescript-filter-select",
+  "nativescript": {
+    "platforms": {
+      "android": "4.0.0",
+      "ios": "4.0.0"
+    },
+    "tns-ios": {
+      "version": "4.0.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moayadnajd/nativescript-filter-select.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "demo.android": "npm run preparedemo && cd demo && tns run android --emulator",
+    "demo.ios": "npm run preparedemo && cd demo && tns run ios --emulator",
+    "demo.ios.device": "npm run preparedemo && cd demo && tns run ios",
+    "postclone": "npm i && node scripts/postclone.js",
+    "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-filter-select && tns plugin add .. && tns install",
+    "setup": "npm i && cd demo && npm i && cd .. && npm run build && cd demo && tns plugin add .. && cd ..",
+    "test.android": "cd demo && tns test android",
+    "test.ios": "cd demo && tns test ios --emulator",
+    "test.ios.device": "cd demo && tns test ios"
+  },
+  "typings": "index.d.ts",
+  "version": "1.2.9"
+}

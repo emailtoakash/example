@@ -1,10 +1,9 @@
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import * as app from "tns-core-modules/application";
+import * as app from 'tns-core-modules/application';
 import { Observable, EventData } from "tns-core-modules/data/observable";
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
 import { NewNoteViewModel } from "./newnote-view-model";
 import { takePicture, requestPermissions } from 'nativescript-camera';
-import { android }from 'tns-core-modules/application';
 import { View } from 'tns-core-modules/ui/core/view';
 import { request } from 'tns-core-modules/http';
 

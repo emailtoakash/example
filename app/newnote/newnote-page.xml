@@ -3,6 +3,7 @@
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:dd="nativescript-drop-down"
+    xmlns:FS="nativescript-filter-select"
     loaded="mainload">
     
 
@@ -35,6 +36,8 @@
             <Label text="Link this note to unit" class="subtitle"/>
             <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
             <Label text="Link this note to leases" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to tenant" class="subtitle"/>
             <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
         </FlexboxLayout>
         <GridLayout row="1" columns="*,auto,*">
