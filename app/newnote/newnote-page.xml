@@ -2,6 +2,7 @@
     class="page"
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:dd="nativescript-drop-down"
     loaded="mainload">
     
 
@@ -29,8 +30,12 @@
             <TextView id="description" hint="Description" autocapitalizationType="sentences" style="color: gray" class="input" />
         </FlexboxLayout>
         <FlexboxLayout id="b" class="form hidden" row="0" flexDirection="column">
-            <TextField id="notetitle" hint="Hello" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border" />
-            <TextView id="description" hint="World!" autocapitalizationType="sentences" style="color: gray" class="input" />
+            <Label text="Link this note to property" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to unit" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to leases" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
         </FlexboxLayout>
         <GridLayout row="1" columns="*,auto,*">
             <Button col="1" tap="onTakePictureTap" text="&#xf03e;" class="roundbutton fa"/>

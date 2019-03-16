@@ -1,0 +1,73 @@
+{
+  "_from": "nativescript-drop-down",
+  "_id": "nativescript-drop-down@5.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-3k6rqVLlb60fs6rLRzKCE+xlrWIN039zcgcx93hoUoWtP1oyRjrDK4YCJh2zGfvWrdvTVCx1/zrkCl7+B3CDDA==",
+  "_location": "/nativescript-drop-down",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "nativescript-drop-down",
+    "name": "nativescript-drop-down",
+    "escapedName": "nativescript-drop-down",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nativescript-drop-down/-/nativescript-drop-down-5.0.0.tgz",
+  "_shasum": "218701c32bca4eb7ee61e5c9b3ad2911b1689785",
+  "_spec": "nativescript-drop-down",
+  "_where": "C:\\Users\\OMISTAJA\\Desktop\\std\\rsp\\example",
+  "author": {
+    "name": "Peter Staev",
+    "email": "peter@tangrasoft.com"
+  },
+  "bugs": {
+    "url": "https://github.com/PeterStaev/NativeScript-Drop-Down/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Dick Smith",
+      "url": "https://github.com/DickSmith"
+    }
+  ],
+  "deprecated": false,
+  "description": "A NativeScript DropDown widget.",
+  "homepage": "https://github.com/PeterStaev/NativeScript-Drop-Down#readme",
+  "keywords": [
+    "NativeScript",
+    "DropDown",
+    "Spinner",
+    "tangra"
+  ],
+  "license": "Apache-2.0",
+  "main": "drop-down",
+  "name": "nativescript-drop-down",
+  "nativescript": {
+    "platforms": {
+      "ios": "4.0.0",
+      "android": "4.0.0"
+    },
+    "plugin": {
+      "nan": "true",
+      "pan": "true",
+      "core3": "true",
+      "category": "Interface"
+    }
+  },
+  "peerDependencies": {
+    "tns-core-modules": ">= 5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeterStaev/NativeScript-Drop-Down.git"
+  },
+  "typings": "drop-down.d.ts",
+  "version": "5.0.0"
+}
