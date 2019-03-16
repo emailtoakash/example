@@ -3,12 +3,12 @@
         <GridLayout rows="auto, *, auto, auto">
             <StackLayout row="0" orientation="vertical" padding="5">
                 <StackLayout orientation="horizontal" row="0" padding="5">
-                    <Label text="saveToGallery" />
-                    <Switch checked="{{ saveToGallery }}"/>
+                    <Label text="saveToGallery"></Label>
+                    <Switch checked="{{ saveToGallery }}"></Switch>
                 </StackLayout>
                 <StackLayout orientation="horizontal" row="0" padding="5">
-                    <Label text="keepAspectRatio" />
-                    <Switch checked="{{ keepAspectRatio }}"/>
+                    <Label text="keepAspectRatio"></Label>
+                    <Switch checked="{{ keepAspectRatio }}"></Switch>
                 </StackLayout>
                 <StackLayout orientation="horizontal" padding="5">
                     <Label text="width"></Label>
@@ -17,9 +17,9 @@
                     <TextField hint="Enter height" keyboardType="number" text="{{ height }}" class="input"></TextField>
                 </StackLayout>
             </StackLayout>
-            <Image row="1" src="{{ cameraImage }}" id="image" stretch="aspectFit" margin="10"/>
+            <Image row="1" src="{{ cameraImage }}" id="image" stretch="aspectFit" margin="10"></Image>
             <TextView row="2" text="{{ labelText }}" editable="false"></TextView>>
-            <Button row="3"  text="Take Picture" tap="onTakePictureTap"  padding="10"/>
+            <Button row="3"  text="Take Picture" tap="onTakePictureTap"  padding="10"></Button>
         </GridLayout>
     </ScrollView>
 </Page>

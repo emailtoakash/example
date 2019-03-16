@@ -1,9 +1,9 @@
 <Page actionBarHidden="true" loaded="loaded">
     <StackLayout class="form m-x-auto m-y-auto" width="70%">
-        <Image src="~/images/assetti.jpg" class="m-b-20" width="60%" />
-        <Label class="h1 m-b-20 m-x-auto" text="Assetti Mobile" />
-        <TextField id="email" text="{{ email }}" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" class="input input-border" />
-        <TextField secure="true" text="{{ password }}" hint="Password" class="input input-border" />
-        <Button text="Sign in" class="btn btn-primary" tap="onTap" />
+        <Image src="~/images/assetti.jpg" class="m-b-20" width="60%"></Image>
+        <Label class="h1 m-b-20 m-x-auto" text="Assetti Mobile"></Label>
+        <TextField id="email" text="{{ email }}" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" class="input input-border"></TextField>
+        <TextField secure="true" text="{{ password }}" hint="Password" class="input input-border"></TextField>
+        <Button text="Sign in" class="btn btn-primary" tap="onTap"></Button>
     </StackLayout>
 </Page>
