@@ -64,3 +64,14 @@ Page {
     font-family: "entypo";
     font-size: 20pt;
 }
+.btn {
+    border-color: white;
+    background-color: transparent;
+    z-index: 0;
+    font-weight: bold;
+    width: 250px;
+    height: 200px;
+    font-size: 20px;
+    color: gray;
+    margin-bottom: 20px;
+}

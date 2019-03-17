@@ -120,7 +120,7 @@ export function onTakePictureTap(args: EventData) {
 
 function backToHome() {
     topmost().navigate({
-        moduleName: "home/home-page",
+        moduleName: "views/notes-list/notes-list-page",
         transition: {
             name: "fade"
         }

@@ -1,23 +1,47 @@
-<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" loaded="mainload">
+<Page
+    class="page"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    loaded="mainload">
+    
 
-    <ActionBar title="New Note" class="action-bar">
+    <ActionBar class="action-bar">
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
         <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
-        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://navigation/menu" 
+            android:visibility="collapsed" 
+            tap="onDrawerButtonTap"
+            ios.position="left">
+        </ActionItem>
+        <Label class="action-bar-title" text="New Note"></Label>
     </ActionBar>
-
     <GridLayout rows="*,auto">
         <FlexboxLayout id="a" class="form" row="0" flexDirection="column">
-            <TextField id="notetitle" hint="Title" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border"></TextField>
-            <TextView id="description" hint="Description" autocapitalizationType="sentences" style="color: gray" class="input"></TextView>
+            <TextField id="notetitle" hint="Title" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border" />
+            <TextView id="description" hint="Description" autocapitalizationType="sentences" style="color: gray" class="input" />
         </FlexboxLayout>
         <FlexboxLayout id="b" class="form hidden" row="0" flexDirection="column">
-            <TextField id="notetitle" hint="Hello" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border"></TextField>
-            <TextView id="description" hint="World!" autocapitalizationType="sentences" style="color: gray" class="input"></TextView>
+            <Label text="Link this note to property" class="subtitle"/>
+            <!-- <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to unit" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to leases" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to tenant" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/> -->
         </FlexboxLayout>
         <GridLayout row="1" columns="*,auto,*">
-            <Button col="1" text="&#xf03e;" class="roundbutton fa"></Button>
-            <Button col="2" text="NEXT" class="btn" tap="changeTab"></Button>
+            <Button col="0" text="BACK" class="btn" tap="changeTab" id="backButton"/>
+            <Button col="1" tap="onTakePictureTap" text="&#xf03e;" class="roundbutton fa"/>
+            <Button col="2" text="NEXT" class="btn" tap="changeTab" id="nextButton"/>
         </GridLayout>
     </GridLayout>   
-
 </Page>

@@ -36,10 +36,11 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                         <Label row="0" col="1" text="Add Note" class="p-r-10" />
                     </GridLayout>
 
-                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Add Image' ? ' selected': '') }}"
-                        route="views/note-image/note-image" title="Add Image" tap="onNavigationItemTap">
+                    
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'View Note' ? ' selected': '') }}"
+                        route="views/note-view/note-view" title="View Note" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf067;" class="fa" />
-                        <Label row="0" col="1" text="Add Image" class="p-r-10" />
+                        <Label row="0" col="1" text="View Note" class="p-r-10" />
                     </GridLayout>
 
                     <StackLayout class="hr-light"></StackLayout>
@@ -49,11 +50,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                         <Label row="0" col="0" text="&#xf013;" class="fa" />
                         <Label row="0" col="1" text="Settings" class="p-r-10" />
                     </GridLayout>
-                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Note-View' ? ' selected': '') }}"
-                        route="note-view/note-view" title="Note-View" tap="onNavigationItemTap">
-                        <Label row="0" col="0" text="&#xf013;" class="fa" />
-                        <Label row="0" col="1" text="Note-View" class="p-r-10" />
-                    </GridLayout>
+                    
                 </StackLayout>
             </ScrollView>
         </GridLayout>

@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.nativescript.exampletns",
+    "id": "org.nativescript.assetti.app",
     "tns-android": {
       "version": "5.2.1"
     },
@@ -15,9 +15,7 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
-    "nativescript": "^5.2.3",
     "nativescript-camera": "^4.2.0",
-    "nativescript-filter-select": "^1.2.9",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-chart": "^3.11.1",
     "nativescript-ui-listview": "^6.0.0",
@@ -33,5 +31,5 @@
     "tslint": "~5.11.0"
   },
   "gitHead": "f548ec926e75201ab1b7c4a3a7ceefe7a4db15af",
-  "readme": "NativeScript Application"
+  "readme": "Assetti NativeScript Application"
 }

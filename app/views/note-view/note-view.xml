@@ -39,11 +39,16 @@ Contractor said that it will take 2 weeks and will cost 2500€." hint="Descript
                 <Label text="ATTACHMENTS" />
             </StackLayout>
         </DockLayout>
-        <StackLayout class="footerbar" orientation="horizontal" height="10%" backgroundColor="#FFFFFF">
+        <GridLayout row="1" columns="*,auto,*">
+            <Button col="0" text="BACK" class="btn" tap="changeTab" id="backButton"/>
+            <Button col="1" tap="onTakePictureTap" text="&#xf03e;" class="roundbutton fa"/>
+            <Button col="2" text="NEXT" class="btn" tap="changeTab" id="nextButton"/>
+        </GridLayout>
+        <!-- <StackLayout class="footerbar" orientation="horizontal" height="10%" backgroundColor="#FFFFFF">
             <Label class="footerlabel" text="ADD" width="33%" />
-            <Label class="footerlabel" id="camera" text="&#xe9bb;" width="33%" />
+             <Button col="1" tap="onTakePictureTap" text="&#xf03e;" class="roundbutton fa"/>
             <Label class="footerlabel" text="SAVE" width="33%" />
-        </StackLayout>
+        </StackLayout> -->
     </StackLayout>
     
 </Page>
