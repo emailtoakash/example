@@ -15,5 +15,5 @@ export function loaded(args: EventData): void {
 export function onTap(args: EventData): void {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
-    page.frame.navigate("home/home-page");
+    page.frame.navigate("/views/home/home-page");
 }
