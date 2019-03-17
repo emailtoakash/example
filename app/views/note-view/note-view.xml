@@ -22,11 +22,13 @@
             <Label class="titlelabel1" text="Tenant Alterations for Assetti Oy" row="0" col="0" colSpan="2"/>
             <Label class="titlelabel2" id="subtitle" text="Samuli Hiltunen, 13.03.2019" row="1" col="0" colSpan="2"/>
             <DockLayout row="2" col="0">
-                <Label class="entypo" text="&#xe9b8;" style="margin-right: 6pt;" />
+                <Label class="entypo" text="&#xe9b8;" style="margin-right: 6pt;" /> 
+              
                 <Label class="titlelabel2" text="KOy Askonneliö" />
             </DockLayout>
             <DockLayout row="2" col="1">
-                <Label class="entypo" text="&#xea26;" style="margin-right: 6pt;" />
+                 <Label class="entypo" text="&#xea26;" style="margin-right: 6pt;" /> 
+               
                 <Label class="titlelabel2" text="Assetti Oy" />
             </DockLayout>
         </GridLayout>
@@ -50,5 +52,5 @@ Contractor said that it will take 2 weeks and will cost 2500€." hint="Descript
             <Label class="footerlabel" text="SAVE" width="33%" />
         </StackLayout> -->
     </StackLayout>
-    
+
 </Page>
