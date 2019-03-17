@@ -17,7 +17,6 @@
   "dependencies": {
     "nativescript": "^5.2.3",
     "nativescript-camera": "^4.2.0",
-    "nativescript-drop-down": "^5.0.0",
     "nativescript-filter-select": "^1.2.9",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-chart": "^3.11.1",
