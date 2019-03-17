@@ -23,3 +23,18 @@
 .hidden {
     visibility: collapsed;
 }
+
+.subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: gray;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.dropdown {
+    font-size: 22px;
+    margin: 30px;
+    border-width: 2px;
+    border-color: gray;
+}

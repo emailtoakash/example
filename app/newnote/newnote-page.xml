@@ -29,12 +29,19 @@
             <TextView id="description" hint="Description" autocapitalizationType="sentences" style="color: gray" class="input" />
         </FlexboxLayout>
         <FlexboxLayout id="b" class="form hidden" row="0" flexDirection="column">
-            <TextField id="notetitle" hint="Hello" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border" />
-            <TextView id="description" hint="World!" autocapitalizationType="sentences" style="color: gray" class="input" />
+            <Label text="Link this note to property" class="subtitle"/>
+            <!-- <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to unit" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to leases" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <Label text="Link this note to tenant" class="subtitle"/>
+            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/> -->
         </FlexboxLayout>
         <GridLayout row="1" columns="*,auto,*">
+            <Button col="0" text="BACK" class="btn" tap="changeTab" id="backButton"/>
             <Button col="1" tap="onTakePictureTap" text="&#xf03e;" class="roundbutton fa"/>
-            <Button col="2" text="NEXT" class="btn" tap="changeTab"/>
+            <Button col="2" text="NEXT" class="btn" tap="changeTab" id="nextButton"/>
         </GridLayout>
     </GridLayout>   
 </Page>
