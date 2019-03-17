@@ -5,7 +5,7 @@ import { SelectedPageService } from "~/shared/selected-page-service";
 import { request } from 'tns-core-modules/http';
 
 export class NewNoteViewModel extends Observable {
-private autocomplete: RadAutoCompleteTextView;
+    private autocomplete: RadAutoCompleteTextView;
 
     constructor(page) {
         super();
@@ -13,22 +13,24 @@ private autocomplete: RadAutoCompleteTextView;
         this.autocomplete.loadSuggestionsAsync = function (text) {      
             let properties;
     
-            const promise = new Promise((resolve, reject) =>
+            const promise = new Promise((resolve, reject) => 
                 request({
-                    url: "https://trial.assetti.pro/api/v2/properties?locale=EN&limit=50&offset=0",
+                    url: "https://trial.assetti.pro/api/v2/properties?locale=EN&limit=5&offset=0",
                     method: "GET",
                     headers: { "Content-Type": "application/json" , "Authorization" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBa2FzaC5TaW5naGFsQHN0dWRlbnQubHV0LmZpIiwiYXVkIjoiNEIxRDQ2OTAtQkQ5Qy00N0RGLUEzM0MtMTMzRUUyNzBEQTM5IiwiaWF0IjoxNTUyNzI3NzQyfQ.QRLfDQvvGT9wcWlelG4vPl5YcCaaJZbirBNzCZDYidQ"},
                 }).then((response) => {
                     properties = response.content.toJSON();
-                    const dataItems: Array<TokenModel> = new Array();
+                    const items: Array<TokenModel> = new Array();
                     for (let i = 0; i < properties.length; i++) {
-                        dataItems.push(new TokenModel(properties[i].name, null));
+                        items.push(new TokenModel(properties[i].name, null));
                     }
-                    resolve(dataItems);
+                    resolve(items);
                 }, (e) => {
                     console.log("Error!")
                     reject();
                 }
+                    
+                
             ));
     
             return promise;
