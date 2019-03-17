@@ -19,25 +19,25 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
             <ScrollView row="1">
                 <StackLayout class="sidedrawer-content">
                     <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
-                        route="home/home-page" title="Home" tap="onNavigationItemTap">
+                        route="views/notes-list/notes-list-page" title="Home" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf015;" class="fa" />
                         <Label row="0" col="1" text="Home" class="p-r-10" />
                     </GridLayout>
 
                     <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Search' ? ' selected': '') }}"
-                        route="search/search-page" title="Search" tap="onNavigationItemTap">
+                        route="views/search/search-page" title="Search" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf002;" class="fa" />
                         <Label row="0" col="1" text="Search" class="p-r-10" />
                     </GridLayout>
 
                     <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'New Note' ? ' selected': '') }}"
-                        route="newnote/newnote-page" title="Add Note" tap="onNavigationItemTap">
+                        route="views/newnote/newnote-page" title="Add Note" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf067;" class="fa" />
                         <Label row="0" col="1" text="Add Note" class="p-r-10" />
                     </GridLayout>
 
                     <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Add Image' ? ' selected': '') }}"
-                        route="note-image/note-image" title="Add Image" tap="onNavigationItemTap">
+                        route="views/note-image/note-image" title="Add Image" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf067;" class="fa" />
                         <Label row="0" col="1" text="Add Image" class="p-r-10" />
                     </GridLayout>
@@ -45,9 +45,14 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                     <StackLayout class="hr-light"></StackLayout>
 
                     <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Settings' ? ' selected': '') }}"
-                        route="settings/settings-page" title="Settings" tap="onNavigationItemTap">
+                        route="views/settings/settings-page" title="Settings" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf013;" class="fa" />
                         <Label row="0" col="1" text="Settings" class="p-r-10" />
+                    </GridLayout>
+                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Note-View' ? ' selected': '') }}"
+                        route="note-view/note-view" title="Note-View" tap="onNavigationItemTap">
+                        <Label row="0" col="0" text="&#xf013;" class="fa" />
+                        <Label row="0" col="1" text="Note-View" class="p-r-10" />
                     </GridLayout>
                 </StackLayout>
             </ScrollView>

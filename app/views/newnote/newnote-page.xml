@@ -1,0 +1,23 @@
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" loaded="mainload">
+
+    <ActionBar title="New Note" class="action-bar">
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+    </ActionBar>
+
+    <GridLayout rows="*,auto">
+        <FlexboxLayout id="a" class="form" row="0" flexDirection="column">
+            <TextField id="notetitle" hint="Title" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border"></TextField>
+            <TextView id="description" hint="Description" autocapitalizationType="sentences" style="color: gray" class="input"></TextView>
+        </FlexboxLayout>
+        <FlexboxLayout id="b" class="form hidden" row="0" flexDirection="column">
+            <TextField id="notetitle" hint="Hello" autocapitalizationType="sentences" style="font-weight: bold; color: gray" class="input input-border"></TextField>
+            <TextView id="description" hint="World!" autocapitalizationType="sentences" style="color: gray" class="input"></TextView>
+        </FlexboxLayout>
+        <GridLayout row="1" columns="*,auto,*">
+            <Button col="1" text="&#xf03e;" class="roundbutton fa"></Button>
+            <Button col="2" text="NEXT" class="btn" tap="changeTab"></Button>
+        </GridLayout>
+    </GridLayout>   
+
+</Page>
