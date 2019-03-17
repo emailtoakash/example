@@ -18,7 +18,7 @@
     </ActionBar>
 
     <StackLayout orientation="vertical" backgroundColor="#FFFFFF">
-        <GridLayout class="titlebar" columns="auto, auto" rows="auto, auto, auto" height="25%" backgroundColor="#2DB7E6">
+        <GridLayout class="header" columns="auto, auto" rows="auto, auto, auto" height="25%" backgroundColor="#2DB7E6">
             <Label class="titlelabel1" text="Tenant Alterations for Assetti Oy" row="0" col="0" colSpan="2"/>
             <Label class="titlelabel2" id="subtitle" text="Samuli Hiltunen, 13.03.2019" row="1" col="0" colSpan="2"/>
             <DockLayout row="2" col="0">
@@ -32,7 +32,7 @@
                 <Label class="titlelabel2" text="Assetti Oy" />
             </DockLayout>
         </GridLayout>
-        <DockLayout class="descbox" height="65%" backgroundColor="#FFFFFF" stretchLastChild="false">
+        <DockLayout class="descbox" height="60%" backgroundColor="#FFFFFF" stretchLastChild="false">
             <!-- editable="{{ editState }}" text="{{ descText }}" -->
             <TextView loaded="descShow" class="description" editable="false" text="Customer is hoping to remove the glass wall between open area and negotiation room.
 
@@ -41,9 +41,9 @@ Contractor said that it will take 2 weeks and will cost 2500€." hint="Descript
                 <Label text="ATTACHMENTS" />
             </StackLayout>
         </DockLayout>
-        <GridLayout row="1" columns="*,auto,*">
-            <Button col="0" text="BACK" class="btn" tap="changeTab" id="backButton"/>
-            <Button col="1" tap="onTakePictureTap" text="&#xf03e;" class="roundbutton fa"/>
+        <GridLayout class="footer" row="1" columns="*,auto,*">
+            <Button col="0" text="BACK" class="btn" tap="onBackTap" id="backButton"/>
+            <Button col="1" tap="onTakePictureTap" text="&#xe9ba;" class="roundbutton-entypo"/>
             <Button col="2" text="NEXT" class="btn" tap="changeTab" id="nextButton"/>
         </GridLayout>
         <!-- <StackLayout class="footerbar" orientation="horizontal" height="10%" backgroundColor="#FFFFFF">

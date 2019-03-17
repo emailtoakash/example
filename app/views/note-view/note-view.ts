@@ -1,16 +1,26 @@
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from 'tns-core-modules/application';
 import { TextView } from "tns-core-modules/ui/text-view";
-import { Observable,EventData } from "tns-core-modules/ui/page/page";
-import { Page } from "tns-core-modules/ui/page/page";
+import { Observable, EventData, Page } from "tns-core-modules/ui/page/page";
 import { takePicture, requestPermissions } from 'nativescript-camera';
+import { topmost } from "tns-core-modules/ui/frame";
 import { View } from 'tns-core-modules/ui/core/view';
 
-// Displaying note description in the desc field
+// Displaying note description in the description field.
 export function descShow(args) {
     const page: Page = <Page> args.object;
     const desc = new Observable();
     desc.set("editState", false);
     desc.set("descText", "Customer is hoping to remove the glass wall between open area and negotiation room.\nContractor said that it will take 2 weeks and will cost 2500€.");
 }
+
+// Open the navigation drawer when user taps the button.
+export function onDrawerButtonTap(args: EventData) {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.showDrawer();
+}
+
+// Open camera when user taps the camera button.
 export function onTakePictureTap(args: EventData) {
     let page = <Page>(<View>args.object).page;
     let saveToGallery = page.bindingContext.get("saveToGallery");
@@ -49,4 +59,14 @@ export function onTakePictureTap(args: EventData) {
         },
         () => alert('permissions rejected')
     );
+}
+
+// User taps the back button, go back to menu.
+export function onBackTap() {
+    topmost().navigate({
+        moduleName: "views/notes-list/notes-list-page",
+        transition: {
+            name: "fade"
+        }
+    });
 }
