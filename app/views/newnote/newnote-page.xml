@@ -2,6 +2,7 @@
     class="page"
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:au="nativescript-ui-autocomplete"
     loaded="mainload">
     
 
@@ -30,6 +31,19 @@
         </FlexboxLayout>
         <FlexboxLayout id="b" class="form hidden" row="0" flexDirection="column">
             <Label text="Link this note to property" class="subtitle"/>
+
+            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" suggestMode="Suggest" displayMode="Plain">
+                <au:RadAutoCompleteTextView.suggestionView>
+                    <au:SuggestionView suggestionViewHeight="300">
+                        <au:SuggestionView.suggestionItemTemplate>
+                            <StackLayout orientation="vertical">
+                                <Label text="{{ text }}"></Label>
+                            </StackLayout>
+                        </au:SuggestionView.suggestionItemTemplate>
+                    </au:SuggestionView>
+                </au:RadAutoCompleteTextView.suggestionView>
+            </au:RadAutoCompleteTextView>
+            <Label text="{{ dataItems[0] }}"/>
             <!-- <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
             <Label text="Link this note to unit" class="subtitle"/>
             <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
