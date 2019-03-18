@@ -12,12 +12,12 @@ Page {
     color: #ffffff;
 }
 
-.header .titlelabel1 {
+.header .hl1 {
     font-weight: 700;
     font-size: 20rem;
 }
 
-.header .titlelabel2 {
+.header .hl2 {
     font-weight: 700;
     font-size: 15rem;
 }
@@ -43,15 +43,6 @@ Page {
     font-size: 20rem;
 }
 
-/*
-.footerbar .footerlabel {
-    text-align: center;
-    padding-top: 10%;
-    font-weight: 700;
-    font-size: 22rem;
-}
-*/
-
 .footer{
     min-height: 200px;
     margin-bottom: 10px;
@@ -68,7 +59,7 @@ Page {
     font-weight: bold;
     width: 250px;
     height: 200px;
-    font-size: 20rem;
+    font-size: 24rem;
     color: gray;
     margin-bottom: 20px;
 }
