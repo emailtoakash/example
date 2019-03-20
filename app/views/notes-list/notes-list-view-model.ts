@@ -7,14 +7,7 @@ export class NotesListViewModel extends Observable {
 
     constructor() {
         super();
-        this.notes = [];
-        const random_note_thingy_count = 40;
-        for (let i=0; i<random_note_thingy_count; i++) {
-            this.notes.push({
-                title: Math.random().toString(36).substring(2, 15),
-                author: Math.random().toString(36).substring(2, 15)
-            });
-        }
+        this.notes = new Array();
         SelectedPageService.getInstance().updateSelectedPage("Home");
     }
 }
