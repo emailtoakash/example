@@ -12,6 +12,8 @@ import { BindingOptions } from "tns-core-modules/ui/core/bindable";
 
 // Displaying note when one is opened.
 export function onNavigatingTo(args: EventData) {
+    const page: Page = <Page> args.object;
+   
     const title = fromObject({titleSource: "Tenant Alterations for Assetti Oy"});
     const owner = fromObject({ownerSource: "Samuli Hiltunen"});
     const cdate = fromObject({cdateSource: "13.03.2019"});
@@ -20,8 +22,8 @@ export function onNavigatingTo(args: EventData) {
     const description = fromObject({
         descSource: "Customer is hoping to remove the glass wall between open area and negotiation room.\n\nContractor said that it will take 2 weeks and will cost 2500€."
     });
-    const page: Page = <Page> args.object;
     page.bindingContext = description;
+    
     
     const targetTitle = new Label();
     const targetOwner = new Label();
