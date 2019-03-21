@@ -1,76 +1,76 @@
 Page {
-    font-family: "OpenSans-Regular", "OpenSans";
-    font-weight: 400;
-    max-width: 100%;
-    color: #5a6066;
+  font-family: "OpenSans-Regular", "OpenSans";
+  font-weight: 400;
+  max-width: 100%;
+  color: #5a6066;
 }
 
 .header {
-    padding-top: 50%;
-    padding-bottom: 10%;
-    padding-left: 15%;
-    color: #ffffff;
+  padding-top: 50%;
+  padding-bottom: 10%;
+  padding-left: 15%;
+  color: #ffffff;
 }
 
 .header .hl1 {
-    font-weight: 700;
-    font-size: 20rem;
+  font-weight: 700;
+  font-size: 20rem;
 }
 
 .header .hl2 {
-    font-weight: 700;
-    font-size: 15rem;
+  font-weight: 700;
+  font-size: 15rem;
 }
 
 .header #subtitle {
-    margin-bottom: 12%;
-    font-weight: 100;
-    font-size: 18rem;
+  margin-bottom: 12%;
+  font-weight: 100;
+  font-size: 18rem;
 }
 
 .descbox {
-    padding: 15%;
-    font-size: 20rem;
+  padding: 15%;
+  font-size: 20rem;
 }
 
 .descbox .description {
-    background-color: transparent;
-    border-color: transparent;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .descbox .attachments {
-    font-weight: 700;
-    font-size: 20rem;
+  font-weight: 700;
+  font-size: 20rem;
 }
 
-.footer{
-    min-height: 200px;
-    margin-bottom: 10px;
+.footer {
+  min-height: 200px;
+  margin-bottom: 10px;
 }
 
 .entypo {
-    font-family: "entypo";
-    font-size: 20rem;
+  font-family: "entypo";
+  font-size: 20rem;
 }
 .btn {
-    border-color: white;
-    background-color: transparent;
-    z-index: 0;
-    font-weight: bold;
-    width: 250px;
-    height: 200px;
-    font-size: 24rem;
-    color: gray;
-    margin-bottom: 20px;
+  border-color: white;
+  background-color: transparent;
+  z-index: 0;
+  font-weight: bold;
+  width: 250px;
+  height: 200px;
+  font-size: 20rem;
+  color: gray;
+  margin-bottom: 20px;
 }
 .roundbutton-entypo {
-    font-family: "entypo";
-    background-color: rgb(45, 183, 230);
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    font-size: 40rem;
-    font-weight: 100;
-    margin-bottom: 10px;
-    color: white;
+  font-family: "entypo";
+  background-color: rgb(45, 183, 230);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  font-size: 40rem;
+  font-weight: 100;
+  margin-bottom: 10px;
+  color: white;
 }
