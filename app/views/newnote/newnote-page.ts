@@ -15,10 +15,7 @@ export function onNavigatingTo(args: NavigatedData) {
     page = <Page>args.object;
     
     nextButton = page.getViewById("nextButton");
-    const properties = ["Skinnarila", "Sammonlahti", "Leiri", "Keskusta"];
-    let viewModel = new Observable();
-    viewModel.set("items", properties);
-    viewModel.set("selectedIndex", 0);
+    let viewModel = new NewNoteViewModel(page);
 
     page.bindingContext = viewModel;
     currentTab = "a";
