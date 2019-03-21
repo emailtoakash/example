@@ -5,32 +5,32 @@ Page {
     color: #5a6066;
 }
 
-.titlebar {
+.header {
     padding-top: 50%;
     padding-bottom: 10%;
     padding-left: 15%;
     color: #ffffff;
 }
 
-.titlebar .titlelabel1 {
+.header .hl1 {
     font-weight: 700;
-    font-size: 20pt;
+    font-size: 20rem;
 }
 
-.titlebar .titlelabel2 {
+.header .hl2 {
     font-weight: 700;
-    font-size: 15pt;
+    font-size: 15rem;
 }
 
-.titlebar #subtitle {
+.header #subtitle {
     margin-bottom: 12%;
     font-weight: 100;
-    font-size: 18pt;
+    font-size: 18rem;
 }
 
 .descbox {
     padding: 15%;
-    font-size: 20pt;
+    font-size: 20rem;
 }
 
 .descbox .description {
@@ -40,29 +40,17 @@ Page {
 
 .descbox .attachments {
     font-weight: 700;
-    font-size: 20pt;
+    font-size: 20rem;
 }
 
-.footerbar .footerlabel {
-    text-align: center;
-    padding-top: 10%;
-    font-weight: 700;
-    font-size: 22pt;
-}
-
-.footerbar #camera{
-    min-height: 6pt;
-    min-width: 6pt;
-    max-height: 1%;
-    max-width: 1%;
-    border-radius: 50%;
-    background-color: #2DB7E6;
-    padding: auto;
+.footer{
+    min-height: 200px;
+    margin-bottom: 10px;
 }
 
 .entypo {
     font-family: "entypo";
-    font-size: 20pt;
+    font-size: 20rem;
 }
 .btn {
     border-color: white;
@@ -71,16 +59,18 @@ Page {
     font-weight: bold;
     width: 250px;
     height: 200px;
-    font-size: 20px;
+    font-size: 24rem;
     color: gray;
     margin-bottom: 20px;
 }
-.roundbutton {
+.roundbutton-entypo {
+    font-family: "entypo";
     background-color: rgb(45, 183, 230);
     border-radius: 50%;
     width: 200px;
     height: 200px;
-    font-size: 30px;
+    font-size: 40rem;
+    font-weight: 100;
     margin-bottom: 10px;
     color: white;
 }
