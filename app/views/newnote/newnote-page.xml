@@ -32,7 +32,7 @@
         <FlexboxLayout id="b" class="form hidden" row="0" flexDirection="column">
 
             <Label text="Link this note to property" class="subtitle"/>
-            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" completionMode="Suggest" displayMode="Plain">
+            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" displayMode="Plain">
                 <au:RadAutoCompleteTextView.suggestionView>
                     <au:SuggestionView suggestionViewHeight="300">
                         <au:SuggestionView.suggestionItemTemplate>
@@ -45,7 +45,7 @@
             </au:RadAutoCompleteTextView>
 
             <Label text="Link this note to unit" class="subtitle"/>
-            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" completionMode="Suggest" displayMode="Plain">
+            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" displayMode="Plain">
                 <au:RadAutoCompleteTextView.suggestionView>
                     <au:SuggestionView suggestionViewHeight="300">
                         <au:SuggestionView.suggestionItemTemplate>
@@ -58,7 +58,7 @@
             </au:RadAutoCompleteTextView>
 
             <Label text="Link this note to leases" class="subtitle"/>
-            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" completionMode="Suggest" displayMode="Plain">
+            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" displayMode="Plain">
                 <au:RadAutoCompleteTextView.suggestionView>
                     <au:SuggestionView suggestionViewHeight="300">
                         <au:SuggestionView.suggestionItemTemplate>
@@ -70,7 +70,7 @@
                 </au:RadAutoCompleteTextView.suggestionView>
             </au:RadAutoCompleteTextView>
 
-            <Label text="Link this note to tenant" class="subtitle"/><au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" completionMode="Suggest" displayMode="Plain">
+            <Label text="Link this note to tenant" class="subtitle"/><au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" displayMode="Plain">
             <au:RadAutoCompleteTextView.suggestionView>
                     <au:SuggestionView suggestionViewHeight="300">
                         <au:SuggestionView.suggestionItemTemplate>
@@ -81,7 +81,7 @@
                     </au:SuggestionView>
                 </au:RadAutoCompleteTextView.suggestionView>
             </au:RadAutoCompleteTextView>
-            
+
         </FlexboxLayout>
         <GridLayout row="1" columns="*,auto,*">
             <Button col="0" text="BACK" class="btn" tap="changeTab" id="backButton"/>
