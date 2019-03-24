@@ -41,6 +41,7 @@
         <GridLayout row="1" columns="*,auto,*">
             <Button col="0" text="BACK" class="btn" tap="changeTab" id="backButton"/>
             <Button col="1" tap="onTakePictureTap" text="&#xf03e;" class="roundbutton fa"/>
+             <Button col="1" tap="onTapImageHandler" text="&#xf03e;" class="roundbutton fa"/>
             <Button col="2" text="NEXT" class="btn" tap="changeTab" id="nextButton"/>
         </GridLayout>
     </GridLayout>   
