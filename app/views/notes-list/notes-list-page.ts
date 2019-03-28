@@ -3,6 +3,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { EventData } from "tns-core-modules/data/observable";
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
+import { topmost } from "tns-core-modules/ui/frame";
 
 // ListView imports
 import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
@@ -59,6 +60,24 @@ export function onItemTap(args: ItemEventData) {
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
+}
+
+export function goToView() {
+    topmost().navigate({
+        moduleName: "views/note-view/note-view",
+        transition: {
+            name: "fade"
+        }
+    });
+}
+
+export function goToAdd() {
+    topmost().navigate({
+        moduleName: "views/newnote/newnote-page",
+        transition: {
+            name: "fade"
+        }
+    });
 }
 
 /*
