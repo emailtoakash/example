@@ -7,8 +7,8 @@ import { alert } from "tns-core-modules/ui/dialogs";
 import { DataStorageService } from "~/shared/data-storage-service";
 
 const user: Observable = fromObject({
-    email: 'akash@assetti.com',
-    password: 'password',
+    email: 'Akash.Singhal@student.lut.fi',
+    password: '',
     error: null
 });
 
@@ -29,7 +29,6 @@ export function onTap(args: EventData): void {
                 message: 'Please check your credentials and network connection.',
                 okButtonText: 'Close'
             }).then(() => {
-                user.set('email', '');
                 user.set('password', '');
             });
         }
@@ -43,3 +42,9 @@ export function onTap(args: EventData): void {
         })
     })*/
 }
+export function onTapByPass(args: EventData): void {
+    const button: Button = <Button>args.object;
+    const page: Page = button.page;
+     
+            page.frame.navigate("views/notes-list/notes-list-page");
+        }

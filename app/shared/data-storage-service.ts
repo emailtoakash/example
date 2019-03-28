@@ -1,5 +1,6 @@
-//import { KJUR, KEYUTIL } from "jsrsasign";
-//import * as base64 from "base-64";
+import { KJUR, KEYUTIL } from "jsrsasign";
+import * as base64 from "base-64";
+import { request } from 'tns-core-modules/http';
 
 export class DataStorageService {
 
@@ -13,13 +14,21 @@ export class DataStorageService {
 
     // api token here for use in the application
     private _apiToken: string = 'api token here';
+    private _statusCode: number;
 
     // public key for auth api
-    /*
-    private _pubKey = KEYUTIL.getKey(`-----BEGIN PUBLIC KEY-----
-        key here
-        -----END PUBLIC KEY-----`);
-    */
+    
+   
+        private _pubKey = KEYUTIL.getKey(`-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAg9OFocUU9KHxweyGFrBw
++PxDzTSvIFjcgvsF7tpiU4PcsFSazeETfWUGqY2CIYCKDUJSjHyyovvvpki9R21+
+hUfqJzfcarEEanMLIUwv7/OJVILswoeqGDGxc/V5udBlmQrS5ZK4aPfpOJHdzW/6
++uyrFVmTSey9U0HYjbcH3wbQNmXi25wMczHlrrxKlXFGOjQa0qhTfcgsEf9srCpr
+WqBE4RdAbQRquSawGzUGEgTDbK7vcq0AQSViM3wCzwLyRT259IMDTIT9k75KXrfu
+CDC59yJhIUm21MqKJqxISuZHDg+spr+VqkbajtD5DfwQgwmxZixVmZQfYrJnRycM
+tQIDAQAB
+-----END PUBLIC KEY-----`);
+    
 
     constructor() {
         if (DataStorageService._instance) {
@@ -32,37 +41,61 @@ export class DataStorageService {
         return DataStorageService._instance; // singleton
     }
 
-    public userLogin(userEmail: string, userPassword: string, callback: Function): void {
+    public userLogin(userEmail: string, userPassword: string, callback: Function): any {
         console.log('Login (' + userEmail + ',' + userPassword + ')');
         this._userData.set('locale', 'EN');
-        callback(true);
-        /*
+        //callback(true);
+        
         let loginData = {
             'email': userEmail,
             'password': userPassword,
             'deviceInfo': 'some device info here',
             'deviceUuid': '5c89b883-ada1-4e5e-8115-3ad522d5a562'
         }
-        fetch(this._host + '/api/v2/login', {
+        request({
+            url: this._host + '/api/v2/login',
+            method: "POST",
+            headers: { "Content-Type": "application/json" , "Accept": "application/json" },
+            content: JSON.stringify({
+                data: this.encryptLoginData(loginData)
+            })
+        }).then((response) => {
+            const r = response.content.toJSON();
+            console.log(r.token + "Akash");
+            console.log(response.statusCode + "- Status Code");
+            this._userData.set('name', r.name);
+               this._userData.set('uuid', r.uuid);
+               this._apiToken = r.token;
+               this._statusCode =response.statusCode;
+               if(response.statusCode == 200 && r.token!=undefined)
+               callback(true);
+               else
+               callback(false);
+            
+        }, (e) => {
+            callback(false);
+            console.log("Error has happened");
+        });
+        /* fetch(this._host + '/api/v2/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                'data': this.encryptLoginData(JSON.stringify(loginData))
-            })
+            content: JSON.stringify(
+                data: this.encryptLoginData(JSON.stringify(loginData))
+            )
         })
             .then((response) => response.json())
             .then((r) => {
                console.log(r);
-               this._userData.set('name', r.get('name'));
-               this._userData.set('uuid', r.get('uuid'));
-               this._apiToken = r.get('token');
+               this._userData.set('name', r.name);
+               this._userData.set('uuid', r.uuid);
+               this._apiToken = r.token;
             }).catch((err) => {
-                //console.log(err)
-            });
-        */
+                console.log(err)
+            }); */
+        
     }
 
     public userLogout(): boolean {
@@ -79,7 +112,7 @@ export class DataStorageService {
         const currentTime = new Date();
 
         if (this._notes.length >= offset + count && this._notesCacheExpiry > currentTime) {
-            //console.log('Fetch none, use cache.');
+            console.log('Fetch none, use cache.');
             callback(this._notes.slice(offset, offset + count));
             return;
         }
@@ -125,7 +158,7 @@ export class DataStorageService {
             });
     }
 
-    /*
+    
     private encryptLoginData(loginData: any): string {
         let encryptedHex: string = KJUR.crypto.Cipher.encrypt(
             JSON.stringify(loginData),
@@ -141,6 +174,6 @@ export class DataStorageService {
         }
         return base64.encode(encryptedRaw);
     }
-    */
+    
 
 }
