@@ -1,3 +1,28 @@
+StackLayout.titlebar {
+    background-color: #2DB7E6;
+}
+
+StackLayout.titlebar Label {
+    color: #FFFFFF;
+}
+
+.entypo {
+    font-family: "entypo";
+    font-size: 20pt;
+}
+
+.description {
+    background-color: transparent;
+    border-width: 0;
+}
+
+.tag {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #FFFFFF;
+}
+
+/*
 Page {
     font-family: "OpenSans-Regular", "OpenSans";
     font-weight: 400;
@@ -84,3 +109,4 @@ Page {
     margin-bottom: 10px;
     color: white;
 }
+*/

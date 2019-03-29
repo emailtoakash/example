@@ -1,16 +1,34 @@
-import { TextView } from "tns-core-modules/ui/text-view";
-import { Observable,EventData } from "tns-core-modules/ui/page/page";
+import { EventData } from "tns-core-modules/ui/page/page";
 import { Page } from "tns-core-modules/ui/page/page";
-import { takePicture, requestPermissions } from 'nativescript-camera';
-import { View } from 'tns-core-modules/ui/core/view';
+import { takePicture, requestPermissions } from "nativescript-camera";
+import { View } from "tns-core-modules/ui/core/view";
+import { SelectedIndexChangedEventData, TabView } from "tns-core-modules/ui/tab-view";
 
-// Displaying note description in the desc field
-export function descShow(args) {
-    const page: Page = <Page> args.object;
-    const desc = new Observable();
-    desc.set("editState", false);
-    desc.set("descText", "Customer is hoping to remove the glass wall between open area and negotiation room.\nContractor said that it will take 2 weeks and will cost 2500€.");
+// the note view view model
+import { NoteViewViewModel } from "./note-view-view-model";
+
+export function onPageLoaded(args: EventData) {
+    const page: Page = <Page>args.object;
+    const viewModel: NoteViewViewModel = new NoteViewViewModel();
+    page.bindingContext = viewModel;
 }
+
+export function editDescription(args: EventData) {
+    //console.log('editing description!');
+    const page: Page = <Page>args.object;
+    const viewModel: NoteViewViewModel = <NoteViewViewModel>page.bindingContext;
+    viewModel.set('editable', !viewModel.get('editable'));
+}
+
+export function onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
+    if (args.newIndex == 2) {
+        //console.log('opening comments');
+        const tabView: TabView = <TabView>args.object;
+        const page: Page = <Page>tabView.page;
+        page.frame.navigate('views/notes-list/notes-list-page');
+    }
+}
+
 export function onTakePictureTap(args: EventData) {
     let page = <Page>(<View>args.object).page;
     let saveToGallery = page.bindingContext.get("saveToGallery");
@@ -37,10 +55,6 @@ export function onTakePictureTap(args: EventData) {
                             actualWidth = nativeImage.size.width * scale;
                             actualHeight = nativeImage.size.height * scale;
                         }
-
-
-                    
-
                     });
                 },
                     (err) => {
