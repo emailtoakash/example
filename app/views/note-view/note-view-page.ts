@@ -1,5 +1,6 @@
 import { EventData } from "tns-core-modules/ui/page/page";
 import { Page } from "tns-core-modules/ui/page/page";
+import { topmost } from "tns-core-modules/ui/frame";
 import { takePicture, requestPermissions } from "nativescript-camera";
 import { View } from "tns-core-modules/ui/core/view";
 import { SelectedIndexChangedEventData, TabView } from "tns-core-modules/ui/tab-view";
@@ -63,4 +64,14 @@ export function onTakePictureTap(args: EventData) {
         },
         () => alert('permissions rejected')
     );
+}
+
+// User taps the back button, go back to menu.
+export function onBackTap() {
+    topmost().navigate({
+        moduleName: "views/notes-list/notes-list-page",
+        transition: {
+            name: "fade"
+        }
+    });
 }

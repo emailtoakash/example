@@ -16,8 +16,34 @@ import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
 import { NotesListViewModel } from "./notes-list-view-model";
 
 export function onNavigatingTo(args: NavigatedData) {
+
     const page = <Page>args.object;
     page.bindingContext = new NotesListViewModel();
+
+    const apiData = new Map<String, any>();
+    apiData.set('locale', 'EN');
+    apiData.set('token', '');  // set api token here, for testing
+    apiData.set('noteLimit', '10');
+    apiData.set('noteOffset', '0');
+
+    const requestUrl = 'https://trial.assetti.pro/api/v2/notes?locale=' + apiData.get('locale') + '&limit=' + apiData.get('noteLimit') + '&offset=' + apiData.get('noteOffset');
+
+    //console.log(requestUrl);
+    //console.log(apiData);
+
+    fetch(requestUrl, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': apiData.get('token')
+        }
+    })
+        .then((response) => response.json())
+        .then((r) => {
+            page.bindingContext.set('notes', r);
+        }).catch((err) => {
+            //console.log(err)
+        });
 }
 
 export function onListViewLoaded(args: EventData) {

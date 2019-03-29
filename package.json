@@ -15,14 +15,20 @@
     "lint": "tslint \"app/**/*.ts\""
   },
   "dependencies": {
+
+    "base-64": "^0.1.0",
+    "jsrsasign": "^8.0.12",
+    "nativescript-background-http": "^3.4.0",
     "nativescript-camera": "^4.2.0",
+    "nativescript-imagepicker": "^6.1.2",
     "nativescript-theme-core": "~1.0.4",
+    "nativescript-ui-autocomplete": "^4.0.0",
     "nativescript-ui-chart": "^3.11.1",
     "nativescript-ui-listview": "^6.0.0",
     "nativescript-ui-sidedrawer": "~5.1.0",
     "rxjs": "~6.3.0",
     "tns-core-modules": "~5.2.0",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.4000"
   },
   "devDependencies": {
     "nativescript-dev-sass": "~1.6.0",

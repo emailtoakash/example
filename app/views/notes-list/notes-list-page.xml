@@ -9,10 +9,10 @@
         <ListView.itemTemplate>
             <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
             <DockLayout stretchLastChild="false" class="list-view-item p-15">
-                <Label dock="left" text="[image]"></Label>
+                <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>
                 <StackLayout orientation="vertical" class="p-l-15 p-r-15">
-                    <Label class="font-weight-bold" text="{{ title || 'Loading...'}}" textWrap="true"></Label>
-                    <Label text="{{ author || 'Anonymous' }}" textWrap="true"></Label>
+                    <Label class="font-weight-bold" text="{{ title || 'undefined'}}" textWrap="true"></Label>
+                    <Label text="{{ createdBy || 'undefined' }}" textWrap="true"></Label>
                 </StackLayout>
                 <Label dock="right" text="[??]"></Label>
             </DockLayout >

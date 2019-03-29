@@ -8,6 +8,7 @@ import { View } from 'tns-core-modules/ui/core/view';
 import { request } from 'tns-core-modules/http';
 import { topmost } from "tns-core-modules/ui/frame";
 import * as dialogs from "tns-core-modules/ui/dialogs";
+import { Button } from "tns-core-modules/ui/button";
 
 let page, currentTab, nextButton;
 
@@ -15,10 +16,7 @@ export function onNavigatingTo(args: NavigatedData) {
     page = <Page>args.object;
     
     nextButton = page.getViewById("nextButton");
-    const properties = ["Skinnarila", "Sammonlahti", "Leiri", "Keskusta"];
-    let viewModel = new Observable();
-    viewModel.set("items", properties);
-    viewModel.set("selectedIndex", 0);
+    let viewModel = new NewNoteViewModel(page);
 
     page.bindingContext = viewModel;
     currentTab = "a";
@@ -27,6 +25,11 @@ export function onNavigatingTo(args: NavigatedData) {
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
+}
+export function onTapImageHandler(args: EventData): void {
+    const button: Button = <Button>args.object;
+    const page: Page = button.page;
+    page.frame.navigate("views/note-image/note-image");
 }
 
 export function changeTab(args) {
@@ -76,46 +79,6 @@ export function changeTab(args) {
             nextButton.text = "NEXT";
         }
     }
-}
-
-export function onTakePictureTap(args: EventData) {
-    let page = <Page>(<View>args.object).page;
-    let saveToGallery = page.bindingContext.get("saveToGallery");
-    let keepAspectRatio = page.bindingContext.get("keepAspectRatio");
-    let width = page.bindingContext.get("width");
-    let height = page.bindingContext.get("height");
-    requestPermissions().then(
-        () => {
-            takePicture({ width: width, height: height, keepAspectRatio: keepAspectRatio, saveToGallery: saveToGallery }).
-                then((imageAsset) => {
-                    page.bindingContext.set("tns", imageAsset);
-                    imageAsset.getImageAsync(function (nativeImage) {
-                        let scale = 1;
-                        let actualWidth = 0;
-                        let actualHeight = 0;
-                        if (imageAsset.android) {
-                            // get the current density of the screen (dpi) and divide it by the default one to get the scale 
-                            //scale = nativeImage.getDensity() / android.util.DisplayMetrics.DENSITY_DEFAULT;
-                            scale = nativeImage.scale;
-                            actualWidth = nativeImage.getWidth();
-                            actualHeight = nativeImage.getHeight();
-                        } else {
-                            scale = nativeImage.scale;
-                            actualWidth = nativeImage.size.width * scale;
-                            actualHeight = nativeImage.size.height * scale;
-                        }
-
-
-                    
-
-                    });
-                },
-                    (err) => {
-                        console.log("Error -> " + err.message);
-                    });
-        },
-        () => alert('permissions rejected')
-    );
 }
 
 function backToHome() {

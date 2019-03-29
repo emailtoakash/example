@@ -2,6 +2,7 @@
     class="page"
     navigatingTo="onNavigatingTo"  
     xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:au="nativescript-ui-autocomplete"
     loaded="mainload">
     
 
@@ -29,18 +30,63 @@
             <TextView id="description" hint="Description" autocapitalizationType="sentences" style="color: gray" class="input" />
         </FlexboxLayout>
         <FlexboxLayout id="b" class="form hidden" row="0" flexDirection="column">
+
             <Label text="Link this note to property" class="subtitle"/>
-            <!-- <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" displayMode="Plain" hint="Add link...">
+                <au:RadAutoCompleteTextView.suggestionView>
+                    <au:SuggestionView suggestionViewHeight="300">
+                        <au:SuggestionView.suggestionItemTemplate>
+                            <StackLayout orientation="vertical">
+                                <Label text="{{ text }}"></Label>
+                            </StackLayout>
+                        </au:SuggestionView.suggestionItemTemplate>
+                    </au:SuggestionView>
+                </au:RadAutoCompleteTextView.suggestionView>
+            </au:RadAutoCompleteTextView>
+
             <Label text="Link this note to unit" class="subtitle"/>
-            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" displayMode="Plain" hint="Add link...">
+                <au:RadAutoCompleteTextView.suggestionView>
+                    <au:SuggestionView suggestionViewHeight="300">
+                        <au:SuggestionView.suggestionItemTemplate>
+                            <StackLayout orientation="vertical">
+                                <Label text="{{ text }}"></Label>
+                            </StackLayout>
+                        </au:SuggestionView.suggestionItemTemplate>
+                    </au:SuggestionView>
+                </au:RadAutoCompleteTextView.suggestionView>
+            </au:RadAutoCompleteTextView>
+
             <Label text="Link this note to leases" class="subtitle"/>
-            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/>
+            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" displayMode="Plain" hint="Add link...">
+                <au:RadAutoCompleteTextView.suggestionView>
+                    <au:SuggestionView suggestionViewHeight="300">
+                        <au:SuggestionView.suggestionItemTemplate>
+                            <StackLayout orientation="vertical">
+                                <Label text="{{ text }}"></Label>
+                            </StackLayout>
+                        </au:SuggestionView.suggestionItemTemplate>
+                    </au:SuggestionView>
+                </au:RadAutoCompleteTextView.suggestionView>
+            </au:RadAutoCompleteTextView>
+
             <Label text="Link this note to tenant" class="subtitle"/>
-            <dd:DropDown items="{{ items }}" class="dropdown" hint="Select"/> -->
+            <au:RadAutoCompleteTextView id="autocomplete" items="{{ dataItems }}" displayMode="Plain" hint="Add link...">
+            <au:RadAutoCompleteTextView.suggestionView>
+                    <au:SuggestionView suggestionViewHeight="300">
+                        <au:SuggestionView.suggestionItemTemplate>
+                            <StackLayout orientation="vertical">
+                                <Label text="{{ text }}"></Label>
+                            </StackLayout>
+                        </au:SuggestionView.suggestionItemTemplate>
+                    </au:SuggestionView>
+                </au:RadAutoCompleteTextView.suggestionView>
+            </au:RadAutoCompleteTextView>
+
         </FlexboxLayout>
         <GridLayout row="1" columns="*,auto,*">
             <Button col="0" text="BACK" class="btn" tap="changeTab" id="backButton"/>
-            <Button col="1" tap="onTakePictureTap" text="&#xf03e;" class="roundbutton fa"/>
+             <Button col="1" tap="onTapImageHandler" text="&#xf03e;" class="roundbutton fa"/>
             <Button col="2" text="NEXT" class="btn" tap="changeTab" id="nextButton"/>
         </GridLayout>
     </GridLayout>   
