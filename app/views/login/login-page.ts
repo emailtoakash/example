@@ -20,7 +20,10 @@ export function loaded(args: EventData): void {
 export function onTap(args: EventData): void {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
-    DataStorageService.getInstance().userLogin(user.get('email'), user.get('password'), (success: boolean) => {
+    // uncomment this block to use the actual login in emulator mode. 
+
+
+/*     DataStorageService.getInstance().userLogin(user.get('email'), user.get('password'), (success: boolean) => {
         if (success) {
             page.frame.navigate("views/notes-list/notes-list-page");
         } else {
@@ -32,8 +35,8 @@ export function onTap(args: EventData): void {
                 user.set('password', '');
             });
         }
-    });
-    // for testing only 
+    }); */
+    // for testing only DONT UNCOMMENT THIS BLOCK
     /*
     DataStorageService.getInstance().getNotes(0, 10, (notes: Array<Object>) => {
         console.log('success 1: ' + notes.length);
