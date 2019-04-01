@@ -5,19 +5,23 @@
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
     </ActionBar>
 
-    <ListView items="{{ notes }}" itemTap="onItemTap" loaded="{{ onListViewLoaded }}" separatorColor="gray" rowHeight="auto" id="listView">
-        <ListView.itemTemplate>
-            <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
-            <DockLayout stretchLastChild="false" class="list-view-item p-15">
-                <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>
-                <StackLayout orientation="vertical" class="p-l-15 p-r-15">
-                    <Label class="font-weight-bold" text="{{ title || 'undefined'}}" textWrap="true"></Label>
-                    <Label text="{{ createdBy || 'undefined' }}" textWrap="true"></Label>
-                </StackLayout>
-                <Label dock="right" text="[??]"></Label>
-            </DockLayout >
-        </ListView.itemTemplate>
-    </ListView>
+    <GridLayout rows="*,100">
+        <ListView items="{{ notes }}" itemTap="onItemTap" loaded="{{ onListViewLoaded }}" separatorColor="gray" rowHeight="auto" id="listView">
+            <ListView.itemTemplate>
+                <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
+                <DockLayout stretchLastChild="false" class="list-view-item p-15">
+                    <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>
+                    <StackLayout orientation="vertical" class="p-l-15 p-r-15">
+                        <Label class="font-weight-bold" text="{{ title || 'undefined'}}" textWrap="true"></Label>
+                        <Label text="{{ createdBy || 'undefined' }}" textWrap="true"></Label>
+                    </StackLayout>
+                    <Label dock="right" text="[??]"></Label>
+                </DockLayout >
+            </ListView.itemTemplate>
+        </ListView>
+
+        <Button row="1" tap="goToAdd" text="+" class="roundbutton fa"/>
+    </GridLayout>
 
     <!--
     tabview commented out here for the time being (not needed)
