@@ -28,6 +28,12 @@ export class NoteViewViewModel extends Observable {
         this.tenant = '[tenant]';
         this.attachments = new Array<any>();
         this.tags = new Array<string>();
+        this.comments = [
+            {authorId: "778231", text: "[Question]"},
+            {authorId: "789123", text: "[Answer]"},
+            {authorId: "778231", text: "[Thank]"},
+            {authorId: "789123", text: "[Bye]"}
+        ];
         this.on(Observable.propertyChangeEvent, (propertyChangeData: PropertyChangeData) => {
             if (propertyChangeData.propertyName === 'description') {
                 //this.set("tvResult", propertyChangeData.value);
