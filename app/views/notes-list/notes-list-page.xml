@@ -5,7 +5,7 @@
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
     </ActionBar>
 
-    <ListView items="{{ notesList }}" itemTap="onItemTap" separatorColor="gray" rowHeight="auto" id="listView">
+    <ListView items="{{ notesList }}" itemTap="onNotesListItemTap" separatorColor="gray" rowHeight="auto" id="listView">
         <ListView.itemTemplate>
             <DockLayout stretchLastChild="false" class="list-view-item p-15" id="{{ uuid }}">
                 <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>

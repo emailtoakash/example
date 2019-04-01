@@ -2,7 +2,7 @@ import { Observable } from "tns-core-modules/data/observable";
 
 import { ObservableProperty } from "~/shared/observable-property-decorator";
 import { SelectedPageService } from "~/shared/selected-page-service";
-import { DataStorageService } from "~/shared/data-storage-service";
+import { UnifiedObservable } from "~/shared/shared-data-structures";
 
 export class AppRootViewModel extends Observable {
     @ObservableProperty() selectedPage: string;
@@ -14,11 +14,7 @@ export class AppRootViewModel extends Observable {
         super();
         SelectedPageService.getInstance().selectedPage$
         .subscribe((selectedPage: string) => this.selectedPage = selectedPage);
-    }
-
-    public updateUserInfo() {
-        this.userName = DataStorageService.getInstance().getUserData().get('name');
-        this.userEmail = DataStorageService.getInstance().getUserData().get('email');
-        //console.log(this.userName, this.userEmail);
+        this.userName = UnifiedObservable.getInstance().userData['name'];
+        this.userEmail = UnifiedObservable.getInstance().userData['email'];
     }
 }

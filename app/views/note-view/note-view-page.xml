@@ -9,7 +9,7 @@
     <StackLayout orientation="vertical">
         <StackLayout verticalAlignment="top" class="titlebar p-15" orientation="vertical">
             <Label class="h2" text="{{ title }}" textWrap="true"></Label>
-            <Label text="{{ uuid }}" textWrap="true" class="m-t-15"></Label>
+            <!--<Label text="{{ uuid }}" textWrap="true" class="m-t-15"></Label>-->
             <GridLayout rows="auto,auto" columns="*,*" class="m-t-10">
                 <StackLayout orientation="horizontal" row="0" col="0" class="m-r-10 m-b-10">
                     <Label class="entypo p-r-10" text="&#xea36;"></Label>
@@ -35,52 +35,45 @@
                 <Repeater.itemTemplate>
                     <Label text="{{ $value }}" class="p-t-5 p-b-5 p-l-10 p-r-10 m-r-5 tag"></Label>
                 </Repeater.itemTemplate>
-            </Repeater>-->
+            </Repeater>
         </StackLayout>
         <TabView verticalAlignment="stretch" androidTabsPosition="top" id="tabsView" selectedIndexChanged="onSelectedIndexChanged">
             <TabViewItem title="Description">
                 <StackLayout orientation="vertical">
-                    <TextView height="100%" class="description p-15" tap="editDescription" editable="{{ currentNoteDescriptionEditable }}" text="{{ description }}" hint="Description" textWrap="true"></TextView>
+                    <TextView height="100%" blur="{{ blurDescription }}" class="description p-15" tap="{{ toggleDescriptionEditable }}" editable="{{ descriptionEditState }}" text="{{ description }}" hint="Description" textWrap="true"></TextView>
                 </StackLayout>
             </TabViewItem>
             <TabViewItem title="Attachments">
-                <ScrollView orientation="vertical">
-                    <DockLayout orientation="vertical" stretchLastChild="false">
-                        <ListView dock="top" items="{{ attachments }}">
+                <DockLayout orientation="vertical" stretchLastChild="false">
+                    <ScrollView dock="top" orientation="vertical">
+                        <ListView items="{{ attachments }}">
                             <ListView.itemTemplate>
                                 <Label class="p-15" text="{{ title }}"></Label>
                             </ListView.itemTemplate>
                         </ListView>
-                        <Button dock="bottom" class="entypo" tap="onTakePictureTap" text="+"></Button>
-                    </DockLayout>
-                </ScrollView>
+                    </ScrollView>
+                    <Button dock="bottom" class="entypo" tap="onTakePictureTap" text="+"></Button>
+                </DockLayout>
             </TabViewItem>
             <TabViewItem title="Discussion">
-                <GridLayout rows="*, auto" width="100%">
-                    <ListView row="0" items="{{ comments }}" rowHeight="auto" margin="10" id="listView">
-                        <ListView.itemTemplate>
-                            <StackLayout>
-                                <StackLayout orientation="vertical" class="comment">
-                                    <Label class="font-weight-bold" text="{{ authorId + ' said:'}}" textWrap="true"></Label>
+                <FlexboxLayout flexDirection="column">
+                    <ScrollView flexGrow="1">
+                        <ListView items="{{ comments }}">
+                            <ListView.itemTemplate>
+                                <StackLayout orientation="vertical" class="comment p-10">
+                                    <Label class="font-weight-bold m-b-10" text="{{ authorId + ':' }}" textWrap="true"></Label>
                                     <Label text="{{ text }}" textWrap="true"></Label>
                                 </StackLayout>
-                            </StackLayout>
-                        </ListView.itemTemplate>
-                    </ListView>
-                    <GridLayout row="1" columns="*, 100" style="margin:20px">
-                        <TextField col="0" hint="Enter comment" id="newComment"></TextField>
-                        <Button col="1" text="Send" tap="sendComment"></Button>
-                    </GridLayout>
-                </GridLayout>
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </ScrollView>
+                    <DockLayout orientation="horizontal" class="m-10">
+                        <TextField dock="left" width="80%" hint="Enter comment" text="{{ newCommentText }}" id="newComment"></TextField>
+                        <Button dock="right" width="20%" text="Send" tap="{{ addComment }}"></Button>
+                    </DockLayout>
+                </FlexboxLayout>
             </TabViewItem>
         </TabView>
-        <!--
-        <FlexboxLayout class="buttonbar" flexGrow="0" flexShrink="0" lexDirection="row">
-            <Button class="textbutton" flexGrow="1" flexShrink="0" text="BACK" tap="changeTab" id="backButton"></Button>
-            <Button class="camerabutton roundbutton fa" flexGrow="0" flexShrink="0" tap="onTakePictureTap" text="&#xf03e;"></Button>
-            <Button class="textbutton" flexGrow="1" flexShrink="0" text="NEXT" tap="changeTab" id="nextButton"></Button>
-        </FlexboxLayout>
-        -->
     </StackLayout>
 
 </Page>
