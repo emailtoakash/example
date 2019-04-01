@@ -1,0 +1,64 @@
+<Page class="page" loaded="onPageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar title="View Note" class="action-bar">
+        <!--<NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>-->
+        <!--<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="onNavBtnTap"/>-->
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+    </ActionBar>
+
+    <StackLayout orientation="vertical">
+        <StackLayout verticalAlignment="top" class="titlebar p-15" orientation="vertical">
+            <Label class="h2" text="{{ title }}" textWrap="true"></Label>
+            <Label text="{{ author }}, {{ time }}" textWrap="true"></Label>
+            <DockLayout stretchLastChild="false" class="p-t-15">
+                <StackLayout orientation="horizontal" dock="left">
+                    <Label class="entypo p-r-10" text="&#xe9b8;"></Label>
+                    <Label text="{{ property }}" textWrap="true"></Label>
+                </StackLayout>
+                <StackLayout orientation="horizontal" dock="right">
+                    <Label class="entypo p-r-10" text="&#xea26;"></Label>
+                    <Label text="{{ tenant }}" textWrap="true"></Label>
+                </StackLayout>
+            </DockLayout>
+            <Repeater items="{{ tags }}">
+                <Repeater.itemsLayout>
+                    <StackLayout orientation="horizontal" class="m-t-15"></StackLayout>
+                </Repeater.itemsLayout>
+                <Repeater.itemTemplate>
+                    <Label text="{{ $value }}" class="p-t-5 p-b-5 p-l-10 p-r-10 m-r-5 tag"></Label>
+                </Repeater.itemTemplate>
+            </Repeater>
+        </StackLayout>
+        <TabView verticalAlignment="stretch" androidTabsPosition="top" id="tabsView" selectedIndexChanged="onSelectedIndexChanged">
+            <TabViewItem title="Description">
+                <StackLayout orientation="vertical">
+                    <TextView height="100%" class="description p-15" tap="editDescription" editable="{{ editable }}" text="{{ description }}" hint="Description" textWrap="true"></TextView>
+                </StackLayout>
+            </TabViewItem>
+            <TabViewItem title="Attachments">
+                <ScrollView orientation="vertical">
+                    <DockLayout orientation="vertical" stretchLastChild="false">
+                        <ListView dock="top" items="{{ attachments }}">
+                            <ListView.itemTemplate>
+                                <Label class="p-15" text="{{ title }}"></Label>
+                            </ListView.itemTemplate>
+                        </ListView>
+                        <Button dock="bottom" class="entypo" tap="onTakePictureTap" text="+"></Button>
+                    </DockLayout>
+                </ScrollView>
+            </TabViewItem>
+            <TabViewItem title="Discussion">
+                <StackLayout orientation="vertical">
+                </StackLayout>
+            </TabViewItem>
+        </TabView>
+        <!--
+        <FlexboxLayout class="buttonbar" flexGrow="0" flexShrink="0" lexDirection="row">
+            <Button class="textbutton" flexGrow="1" flexShrink="0" text="BACK" tap="changeTab" id="backButton"></Button>
+            <Button class="camerabutton roundbutton fa" flexGrow="0" flexShrink="0" tap="onTakePictureTap" text="&#xf03e;"></Button>
+            <Button class="textbutton" flexGrow="1" flexShrink="0" text="NEXT" tap="changeTab" id="nextButton"></Button>
+        </FlexboxLayout>
+        -->
+    </StackLayout>
+
+</Page>
