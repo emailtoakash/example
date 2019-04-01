@@ -5,49 +5,20 @@
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
     </ActionBar>
 
-    <GridLayout rows="*,100">
-        <ListView items="{{ notes }}" itemTap="onItemTap" loaded="{{ onListViewLoaded }}" separatorColor="gray" rowHeight="auto" id="listView">
-            <ListView.itemTemplate>
-                <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
-                <DockLayout stretchLastChild="false" class="list-view-item p-15">
-                    <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>
-                    <StackLayout orientation="vertical" class="p-l-15 p-r-15">
-                        <Label class="font-weight-bold" text="{{ title || 'undefined'}}" textWrap="true"></Label>
-                        <Label text="{{ createdBy || 'undefined' }}" textWrap="true"></Label>
-                    </StackLayout>
-                    <Label dock="right" text="[??]"></Label>
-                </DockLayout >
-            </ListView.itemTemplate>
-        </ListView>
+    <ListView items="{{ notesList }}" itemTap="onNotesListItemTap" separatorColor="gray" rowHeight="auto" id="listView">
+        <ListView.itemTemplate>
+            <DockLayout stretchLastChild="false" class="list-view-item p-15" id="{{ uuid }}">
+                <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>
+                <StackLayout orientation="vertical" class="p-l-15 p-r-15">
+                    <Label class="font-weight-bold" text="{{ title }}" textWrap="true"></Label>
+                    <Label text="{{ author }}" textWrap="true"></Label>
+                </StackLayout>
+                <StackLayout dock="right" orientation="horizontal">
+                    <Label text="{{ comments.length }}"></Label>
+                    <Label class="entypo m-l-10" text="&#xea18;"></Label>
+                </StackLayout>
+            </DockLayout >
+        </ListView.itemTemplate>
+    </ListView>
 
-        <Button row="1" tap="goToAdd" text="+" class="roundbutton fa"/>
-    </GridLayout>
-
-    <!--
-    tabview commented out here for the time being (not needed)
-    <TabView id="tabViewContainer">
-        <TabViewItem title="Proximity">
-        </TabViewItem>
-        <TabViewItem title="Urgent">
-            <StackLayout>
-                <FlexboxLayout flexDirection="column" backgroundColor="lightgray">
-                    <Label text="Label 2" backgroundColor="red"/>
-                    <Label text="Label 2" backgroundColor="green"/>
-                    <Label text="Label 3" backgroundColor="blue"/>
-                    <Label text="Label 4" backgroundColor="yellow"/>
-                </FlexboxLayout>∏
-            </StackLayout>
-        </TabViewItem>
-        <TabViewItem title="My Notes">
-            <StackLayout>
-                <FlexboxLayout flexDirection="column" backgroundColor="lightgray">
-                    <Label text="Label 2" backgroundColor="red"/>
-                    <Label text="Label 2" backgroundColor="green"/>
-                    <Label text="Label 3" backgroundColor="blue"/>
-                    <Label text="Label 4" backgroundColor="yellow"/>
-                </FlexboxLayout>∏
-            </StackLayout>
-        </TabViewItem>
-    </TabView>
-    -->
 </Page>

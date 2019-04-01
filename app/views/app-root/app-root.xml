@@ -12,8 +12,8 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
         <GridLayout rows="auto, *" class="sidedrawer sidedrawer-left">
             <StackLayout class="sidedrawer-header">
                 <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
-                <Label class="sidedrawer-header-brand" text="Akash Singhal" />
-                <Label class="footnote" text="akash@assetti.com" />
+                <Label class="sidedrawer-header-brand" text="{{ userName }}" />
+                <Label class="footnote" text="{{ userEmail }}" />
             </StackLayout>
 
             <ScrollView row="1">

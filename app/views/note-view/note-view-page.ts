@@ -1,35 +1,14 @@
-import { EventData } from "tns-core-modules/ui/page/page";
-import { Page } from "tns-core-modules/ui/page/page";
+import { EventData, Page } from "tns-core-modules/ui/page/page";
 import { topmost } from "tns-core-modules/ui/frame";
 import { takePicture, requestPermissions } from "nativescript-camera";
 import { View } from "tns-core-modules/ui/core/view";
-import { SelectedIndexChangedEventData, TabView } from "tns-core-modules/ui/tab-view";
 
 // the note view view model
-import { NoteViewViewModel } from "./note-view-view-model";
-
-let page;
+import { UnifiedObservable, Note } from "~/shared/shared-data-structures";
 
 export function onPageLoaded(args: EventData) {
-    page = <Page>args.object;
-    const viewModel: NoteViewViewModel = new NoteViewViewModel();
-    page.bindingContext = viewModel;
-}
-
-export function editDescription(args: EventData) {
-    //console.log('editing description!');
     const page: Page = <Page>args.object;
-    const viewModel: NoteViewViewModel = <NoteViewViewModel>page.bindingContext;
-    viewModel.set('editable', !viewModel.get('editable'));
-}
-
-export function onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
-    // if (args.newIndex == 2) {
-    //     console.log('opening comments');
-    //     const tabView: TabView = <TabView>args.object;
-    //     const page: Page = <Page>tabView.page;
-    //     page.frame.navigate('views/notes-list/notes-list-page');
-    // }
+    page.bindingContext = <Note>UnifiedObservable.getInstance().getCurrentNote();
 }
 
 export function onTakePictureTap(args: EventData) {
@@ -66,18 +45,6 @@ export function onTakePictureTap(args: EventData) {
         },
         () => alert('permissions rejected')
     );
-}
-
-export function sendComment() {
-    const newComment = page.getViewById("newComment");
-    console.log(newComment.text);
-    let view = page.bindingContext;
-    view.comments.push({
-        authorId: "000000",
-        text: newComment.text
-    });
-    newComment.dismissSoftInput();
-    newComment.text = "";
 }
 
 // User taps the back button, go back to menu.

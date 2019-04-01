@@ -3,57 +3,28 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { EventData } from "tns-core-modules/data/observable";
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
-import { topmost } from "tns-core-modules/ui/frame";
-
-// ListView imports
-import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
-
-// Unused imports for time being
-//import { Label } from "tns-core-modules/ui/label";
-//import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
-//import { TabView, TabViewItem, SelectedIndexChangedEventData } from "tns-core-modules/ui/tab-view";
+import { SelectedPageService } from "~/shared/selected-page-service";
+import { ItemEventData } from "tns-core-modules/ui/list-view";
 
 // The actual view model for the view
-import { NotesListViewModel } from "./notes-list-view-model";
+import { UnifiedObservable } from "~/shared/shared-data-structures";
 
 export function onNavigatingTo(args: NavigatedData) {
-
+    SelectedPageService.getInstance().updateSelectedPage("Home");
     const page = <Page>args.object;
-    page.bindingContext = new NotesListViewModel();
+    page.bindingContext = UnifiedObservable.getInstance();
+    page.bindingContext.getNotes(0, 60, () => { return; });
+}
 
-    const apiData = new Map<String, any>();
-    apiData.set('locale', 'EN');
-    apiData.set('token', '');  // set api token here, for testing
-    apiData.set('noteLimit', '10');
-    apiData.set('noteOffset', '0');
-
-    const requestUrl = 'https://trial.assetti.pro/api/v2/notes?locale=' + apiData.get('locale') + '&limit=' + apiData.get('noteLimit') + '&offset=' + apiData.get('noteOffset');
-
-    //console.log(requestUrl);
-    //console.log(apiData);
-
-    fetch(requestUrl, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': apiData.get('token')
+export function onNotesListItemTap(args: ItemEventData) {
+    UnifiedObservable.getInstance().setCurrentNote(args.view.id);
+    const page: Page = <Page>args.view.page;
+    page.frame.navigate({
+        moduleName: 'views/note-view/note-view-page',
+        transition: {
+            name: 'fade'
         }
-    })
-        .then((response) => response.json())
-        .then((r) => {
-            page.bindingContext.set('notes', r);
-        }).catch((err) => {
-            //console.log(err)
-        });
-}
-
-export function onListViewLoaded(args: EventData) {
-    const listView = <ListView>args.object;
-}
-
-export function onItemTap(args: ItemEventData) {
-    const index = args.index;
-    console.log('ListView item tab ${index}');
+    });
 }
 
 // Open the navigation drawer when user clicks the button.
@@ -61,49 +32,3 @@ export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
 }
-
-export function goToView() {
-    topmost().navigate({
-        moduleName: "views/note-view/note-view",
-        transition: {
-            name: "fade"
-        }
-    });
-}
-
-export function goToAdd() {
-    topmost().navigate({
-        moduleName: "views/newnote/newnote-page",
-        transition: {
-            name: "fade"
-        }
-    });
-}
-
-/*
-const stackLayout0 = new StackLayout();
-const label0 = new Label();
-label0.text = "Tab 0";
-stackLayout0.addChild(label0);
-
-const stackLayout1 = new StackLayout();
-const label1 = new Label();
-label1.text = "Tab 1";
-stackLayout1.addChild(label1);
-
-const tabViewItem0 = new TabViewItem();
-tabViewItem0.title = "Tab 0";
-tabViewItem0.view = stackLayout0;
-
-const tabViewItem1 = new TabViewItem();
-tabViewItem1.title = "Tab 1";
-tabViewItem1.view = stackLayout1;
-
-// creating TabView
-const tabView = new TabView();
-// setting up its items and the selected index
-const items = [];
-items.push(tabViewItem0);
-items.push(tabViewItem1);
-tabView.items = items;
-*/
