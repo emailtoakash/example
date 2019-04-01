@@ -48,8 +48,22 @@
                 </ScrollView>
             </TabViewItem>
             <TabViewItem title="Discussion">
-                <StackLayout orientation="vertical">
-                </StackLayout>
+                <GridLayout rows="*, auto" width="100%">
+                    <ListView row="0" items="{{ comments }}" rowHeight="auto" margin="10" id="listView">
+                        <ListView.itemTemplate>
+                            <StackLayout>
+                                <StackLayout orientation="vertical" class="comment">
+                                    <Label class="font-weight-bold" text="{{ authorId + ' said:'}}" textWrap="true"></Label>
+                                    <Label text="{{ text }}" textWrap="true"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                    <GridLayout row="1" columns="*, 100" style="margin:20px">
+                        <TextField col="0" hint="Enter comment" id="newComment"></TextField>
+                        <Button col="1" text="Send" tap="sendComment"></Button>
+                    </GridLayout>
+                </GridLayout>
             </TabViewItem>
         </TabView>
         <!--

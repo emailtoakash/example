@@ -8,8 +8,10 @@ import { SelectedIndexChangedEventData, TabView } from "tns-core-modules/ui/tab-
 // the note view view model
 import { NoteViewViewModel } from "./note-view-view-model";
 
+let page;
+
 export function onPageLoaded(args: EventData) {
-    const page: Page = <Page>args.object;
+    page = <Page>args.object;
     const viewModel: NoteViewViewModel = new NoteViewViewModel();
     page.bindingContext = viewModel;
 }
@@ -22,12 +24,12 @@ export function editDescription(args: EventData) {
 }
 
 export function onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
-    if (args.newIndex == 2) {
-        //console.log('opening comments');
-        const tabView: TabView = <TabView>args.object;
-        const page: Page = <Page>tabView.page;
-        page.frame.navigate('views/notes-list/notes-list-page');
-    }
+    // if (args.newIndex == 2) {
+    //     console.log('opening comments');
+    //     const tabView: TabView = <TabView>args.object;
+    //     const page: Page = <Page>tabView.page;
+    //     page.frame.navigate('views/notes-list/notes-list-page');
+    // }
 }
 
 export function onTakePictureTap(args: EventData) {
@@ -64,6 +66,18 @@ export function onTakePictureTap(args: EventData) {
         },
         () => alert('permissions rejected')
     );
+}
+
+export function sendComment() {
+    const newComment = page.getViewById("newComment");
+    console.log(newComment.text);
+    let view = page.bindingContext;
+    view.comments.push({
+        authorId: "000000",
+        text: newComment.text
+    });
+    newComment.dismissSoftInput();
+    newComment.text = "";
 }
 
 // User taps the back button, go back to menu.
