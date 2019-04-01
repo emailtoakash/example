@@ -6,21 +6,21 @@ import { View } from "tns-core-modules/ui/core/view";
 import { SelectedIndexChangedEventData, TabView } from "tns-core-modules/ui/tab-view";
 
 // the note view view model
-import { NoteViewViewModel } from "./note-view-view-model";
+//import { NoteViewViewModel } from "./note-view-view-model";
+import { UnifiedObservable } from "~/shared/data-storage-service";
 
 let page;
 
 export function onPageLoaded(args: EventData) {
-    page = <Page>args.object;
-    const viewModel: NoteViewViewModel = new NoteViewViewModel();
-    page.bindingContext = viewModel;
+    const page: Page = <Page>args.object;
+    page.bindingContext = UnifiedObservable.getInstance().getCurrentNote();
 }
 
 export function editDescription(args: EventData) {
     //console.log('editing description!');
     const page: Page = <Page>args.object;
-    const viewModel: NoteViewViewModel = <NoteViewViewModel>page.bindingContext;
-    viewModel.set('editable', !viewModel.get('editable'));
+    const viewModel: UnifiedObservable = <UnifiedObservable>page.bindingContext;
+    viewModel.set('currentNoteDescriptionEditable', !viewModel.get('currentNoteDescriptionEditable'));
 }
 
 export function onSelectedIndexChanged(args: SelectedIndexChangedEventData) {

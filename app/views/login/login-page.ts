@@ -4,17 +4,11 @@ import { Page } from "tns-core-modules/ui/page";
 import { alert } from "tns-core-modules/ui/dialogs";
 
 // import data storage service for storing user data
-import { DataStorageService } from "~/shared/data-storage-service";
-
-const user: Observable = fromObject({
-    email: 'Akash.Singhal@student.lut.fi',
-    password: '',
-    error: null
-});
+import { UnifiedObservable } from "~/shared/data-storage-service";
 
 export function loaded(args: EventData): void {
     const page: Page = <Page>args.object;
-    page.bindingContext = user;
+    page.bindingContext = UnifiedObservable.getInstance();
 }
 
 export function onTap(args: EventData): void {
@@ -45,9 +39,12 @@ export function onTap(args: EventData): void {
         })
     })*/
 }
+
 export function onTapByPass(args: EventData): void {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
-     
-            page.frame.navigate("views/notes-list/notes-list-page");
-        }
+    console.log('bypass login');
+    UnifiedObservable.getInstance().userLogin(true, (success: boolean) => {
+        page.frame.navigate("views/notes-list/notes-list-page");
+    });
+}

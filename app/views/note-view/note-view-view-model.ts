@@ -1,15 +1,20 @@
 import { Observable, PropertyChangeData } from "tns-core-modules/data/observable";
 import { SelectedPageService } from "~/shared/selected-page-service";
 
+import { DataStorageService } from "~/shared/data-storage-service";
+import { using } from "rxjs";
+
 export class NoteViewViewModel extends Observable {
 
-    private uuid: string;
+    private noteData: Map<string,any>;
+    public date: string;
+    public uuid: string;
     public comments: Array<Object>;
     public attachments: Array<any>;
     public description: string;
     public title: string;
     public author: string;
-    public time: string;
+    public time: Date;
     public property: string;
     public tenant: string;
     public editable: boolean;
@@ -17,13 +22,21 @@ export class NoteViewViewModel extends Observable {
 
     constructor() {
         super();
-        this.uuid = '';
+        this.noteData = DataStorageService.getInstance().getCurrentNote();
+        console.log(this.noteData);
+        this.uuid = this.noteData['uuid'];
         this.editable = false;
-        this.comments = new Array<Object>();
-        this.description = '[description]';
-        this.title = '[title]';
-        this.author = '[author]';
-        this.time = '[time]';
+        this.comments = this.noteData['replyList'];
+        this.description = (this.noteData['comment'] != null) ? this.noteData['comment'].replace(/<\/?[a-z]+>/gm, '') : '';
+        this.title = this.noteData['title'];
+        this.author = this.noteData['createdBy'];
+        this.time = new Date(this.noteData['createdTimestamp']*1000);
+        //this.date = this.time.toISOString().slice(0,10);
+        this.date = this.time.toLocaleDateString();
+        DataStorageService.getInstance().getProperty(this.noteData['propertyUuid'], function(propertyData: Object) {
+            //this.property = propertyData ? propertyData['name'] : 'undefined';
+            console.log('aaaaa!');
+        });
         this.property = '[property]';
         this.tenant = '[tenant]';
         this.attachments = new Array<any>();
@@ -34,6 +47,7 @@ export class NoteViewViewModel extends Observable {
             {authorId: "778231", text: "[Thank]"},
             {authorId: "789123", text: "[Bye]"}
         ];
+        this.tags = this.noteData['tags'].split(' ');
         this.on(Observable.propertyChangeEvent, (propertyChangeData: PropertyChangeData) => {
             if (propertyChangeData.propertyName === 'description') {
                 //this.set("tvResult", propertyChangeData.value);

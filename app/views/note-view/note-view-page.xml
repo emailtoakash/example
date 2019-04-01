@@ -2,24 +2,32 @@
 
     <ActionBar title="View Note" class="action-bar">
         <!--<NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>-->
-        <!--<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="onNavBtnTap"/>-->
+        <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="onBackTap"/>
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
     </ActionBar>
 
     <StackLayout orientation="vertical">
         <StackLayout verticalAlignment="top" class="titlebar p-15" orientation="vertical">
             <Label class="h2" text="{{ title }}" textWrap="true"></Label>
-            <Label text="{{ author }}, {{ time }}" textWrap="true"></Label>
-            <DockLayout stretchLastChild="false" class="p-t-15">
-                <StackLayout orientation="horizontal" dock="left">
+            <Label text="{{ uuid }}" textWrap="true" class="m-t-15"></Label>
+            <GridLayout rows="auto,auto" columns="*,*" class="m-t-10">
+                <StackLayout orientation="horizontal" row="0" col="0" class="m-r-10 m-b-10">
+                    <Label class="entypo p-r-10" text="&#xea36;"></Label>
+                    <Label text="{{ author }}" textWrap="true"></Label>
+                </StackLayout>
+                <StackLayout orientation="horizontal" row="0" col="1">
+                    <Label class="entypo p-r-10" text="&#xe9b8;"></Label>
+                    <Label text="{{ date }}" textWrap="true"></Label>
+                </StackLayout>
+                <StackLayout orientation="horizontal" row="1" col="0">
                     <Label class="entypo p-r-10" text="&#xe9b8;"></Label>
                     <Label text="{{ property }}" textWrap="true"></Label>
                 </StackLayout>
-                <StackLayout orientation="horizontal" dock="right">
+                <StackLayout orientation="horizontal" row="1" col="1">
                     <Label class="entypo p-r-10" text="&#xea26;"></Label>
                     <Label text="{{ tenant }}" textWrap="true"></Label>
                 </StackLayout>
-            </DockLayout>
+            </GridLayout>
             <Repeater items="{{ tags }}">
                 <Repeater.itemsLayout>
                     <StackLayout orientation="horizontal" class="m-t-15"></StackLayout>
@@ -27,12 +35,12 @@
                 <Repeater.itemTemplate>
                     <Label text="{{ $value }}" class="p-t-5 p-b-5 p-l-10 p-r-10 m-r-5 tag"></Label>
                 </Repeater.itemTemplate>
-            </Repeater>
+            </Repeater>-->
         </StackLayout>
         <TabView verticalAlignment="stretch" androidTabsPosition="top" id="tabsView" selectedIndexChanged="onSelectedIndexChanged">
             <TabViewItem title="Description">
                 <StackLayout orientation="vertical">
-                    <TextView height="100%" class="description p-15" tap="editDescription" editable="{{ editable }}" text="{{ description }}" hint="Description" textWrap="true"></TextView>
+                    <TextView height="100%" class="description p-15" tap="editDescription" editable="{{ currentNoteDescriptionEditable }}" text="{{ description }}" hint="Description" textWrap="true"></TextView>
                 </StackLayout>
             </TabViewItem>
             <TabViewItem title="Attachments">

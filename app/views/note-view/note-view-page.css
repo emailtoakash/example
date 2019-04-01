@@ -6,11 +6,6 @@ StackLayout.titlebar Label {
     color: #FFFFFF;
 }
 
-.entypo {
-    font-family: "entypo";
-    font-size: 20pt;
-}
-
 .description {
     background-color: transparent;
     border-width: 0;

@@ -8,43 +8,13 @@ import { topmost } from "tns-core-modules/ui/frame";
 // ListView imports
 import { ListView, ItemEventData } from "tns-core-modules/ui/list-view";
 
-// Unused imports for time being
-//import { Label } from "tns-core-modules/ui/label";
-//import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout";
-//import { TabView, TabViewItem, SelectedIndexChangedEventData } from "tns-core-modules/ui/tab-view";
-
 // The actual view model for the view
-import { NotesListViewModel } from "./notes-list-view-model";
+import { UnifiedObservable } from "~/shared/data-storage-service";
 
 export function onNavigatingTo(args: NavigatedData) {
-
     const page = <Page>args.object;
-    page.bindingContext = new NotesListViewModel();
-
-    const apiData = new Map<String, any>();
-    apiData.set('locale', 'EN');
-    apiData.set('token', '');  // set api token here, for testing
-    apiData.set('noteLimit', '10');
-    apiData.set('noteOffset', '0');
-
-    const requestUrl = 'https://trial.assetti.pro/api/v2/notes?locale=' + apiData.get('locale') + '&limit=' + apiData.get('noteLimit') + '&offset=' + apiData.get('noteOffset');
-
-    //console.log(requestUrl);
-    //console.log(apiData);
-
-    fetch(requestUrl, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': apiData.get('token')
-        }
-    })
-        .then((response) => response.json())
-        .then((r) => {
-            page.bindingContext.set('notes', r);
-        }).catch((err) => {
-            //console.log(err)
-        });
+    page.bindingContext = UnifiedObservable.getInstance();
+    page.bindingContext.getNotes(0, 4, () => { return; });
 }
 
 export function onListViewLoaded(args: EventData) {
@@ -52,8 +22,9 @@ export function onListViewLoaded(args: EventData) {
 }
 
 export function onItemTap(args: ItemEventData) {
-    const index = args.index;
-    console.log('ListView item tab ${index}');
+    const page: Page = <Page>args.view.page;
+    UnifiedObservable.getInstance().setCurrentNote(args.view.id);
+    page.frame.navigate('views/note-view/note-view-page');
 }
 
 // Open the navigation drawer when user clicks the button.
