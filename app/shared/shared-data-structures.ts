@@ -1,3 +1,4 @@
+//UNCOMMENT THIS FOR LOGIN VIA API
 //import { KJUR, KEYUTIL } from "jsrsasign";
 //import * as base64 from "base-64";
 import { request, HttpResponse } from 'tns-core-modules/http';
@@ -116,8 +117,8 @@ export class UnifiedObservable extends Observable {
     private host: string = 'https://trial.assetti.pro';
 
     // public key for auth api
-    
-  /*   private _pubKey = KEYUTIL.getKey(`
+    //UNCOMMENT THIS FOR LOGIN VIA API
+    /* private _pubKey = KEYUTIL.getKey(`
         -----BEGIN PUBLIC KEY-----
         MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAg9OFocUU9KHxweyGFrBw
         +PxDzTSvIFjcgvsF7tpiU4PcsFSazeETfWUGqY2CIYCKDUJSjHyyovvvpki9R21+
@@ -127,7 +128,7 @@ export class UnifiedObservable extends Observable {
         CDC59yJhIUm21MqKJqxISuZHDg+spr+VqkbajtD5DfwQgwmxZixVmZQfYrJnRycM
         tQIDAQAB
         -----END PUBLIC KEY-----`
-    ); */
+    );  */
 
     constructor() {
         super();
@@ -174,6 +175,7 @@ export class UnifiedObservable extends Observable {
                 'deviceUuid': '5c89b883-ada1-4e5e-8115-3ad522d5a562'
             };
             const bodyContent = {
+                //UNCOMMENT THIS FOR LOGIN VIA API
                 //data: this.encryptLoginData(loginData)
             };
             this.apiRequest('/api/v2/login', 'POST', null, bodyContent, function(response: HttpResponse, userData: object) {
@@ -211,7 +213,7 @@ export class UnifiedObservable extends Observable {
         }
         headers['Content-Type'] = 'application/json';
         headers['Authorization'] = this.userData['apiToken'];
-        console.log(this.userData['apiToken']);
+        //console.log(this.userData['apiToken']);
         headers['Accept'] = 'application/json';
         request({
             url: this.host + url,
@@ -289,8 +291,8 @@ export class UnifiedObservable extends Observable {
         });
     }
 
-    
- /*    private encryptLoginData(loginData: any): string {
+    //UNCOMMENT THIS FOR LOGIN VIA API
+   /*  private encryptLoginData(loginData: any): string {
         let encryptedHex: string = KJUR.crypto.Cipher.encrypt(
             JSON.stringify(loginData),
             this._pubKey,
@@ -304,7 +306,7 @@ export class UnifiedObservable extends Observable {
             encryptedRaw += String.fromCharCode(parseInt(encryptedHex.substr(i * 2, 2), 16));
         }
         return base64.encode(encryptedRaw);
-    } */
+    } */ 
 
 
 }
