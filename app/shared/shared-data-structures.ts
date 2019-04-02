@@ -128,7 +128,7 @@ export class UnifiedObservable extends Observable {
         CDC59yJhIUm21MqKJqxISuZHDg+spr+VqkbajtD5DfwQgwmxZixVmZQfYrJnRycM
         tQIDAQAB
         -----END PUBLIC KEY-----`
-    );  */
+    );   */
 
     constructor() {
         super();
@@ -157,14 +157,11 @@ export class UnifiedObservable extends Observable {
     }
 
     public userLogin(bypass: boolean, callback: Function): any {
-        //console.log('userLogin(' + this.userData['email'] + ',' + this.userData['password'] + ')');
         this.userData['locale'] = 'EN';
-        this.userData['name'] = 'John Smith';
-        this.userData['email'] = 'john@assetti.fi'
-        this.userData['uuid'] = 'xyz'
-        //this.userData.name ='John Smith';
-        //this.userData.email ='John Smith';
         if (bypass) {
+            this.userData['name'] = 'John Smith';
+            this.userData['email'] = 'john@.fi'
+            this.userData['uuid'] = 'xyz'
             this.userData['apiToken'] = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBa2FzaC5TaW5naGFsQHN0dWRlbnQubHV0LmZpIiwiYXVkIjoiNEIxRDQ2OTAtQkQ5Qy00N0RGLUEzM0MtMTMzRUUyNzBEQTM5IiwiaWF0IjoxNTU0MTkxMTE3fQ.NESl83lLOP8K9AZkHXQ10V19PsuR7Wl6YkEJuQvmpOw'; // <- API token here when bypassing
             callback(true);
         } else {
@@ -181,22 +178,9 @@ export class UnifiedObservable extends Observable {
             this.apiRequest('/api/v2/login', 'POST', null, bodyContent, function(response: HttpResponse, userData: object) {
                 const r = response.content.toJSON();
                 console.log('response.statusCode = ' + response.statusCode);
-                console.log("####1"+ userData['name']); 
-                /* this.userData['name'] = userData['name'] ? userData['name'] : '[unknown]';
-                console.log("####2"); 
-                this.userData['uuid'] = userData['uuid'] ? userData['uuid'] : '[unknown]';
-                console.log("####3"); 
-                this.userData['apiToken'] = userData['token'] ? userData['token'] : '[unknown]'; */
-                //console.log(userData['token'] + "####" + r.token); 
-                if(response.statusCode == 200)
-                {
-                console.log("####2"); 
-                this.userData.name = userData['name'] ;
-                console.log("####2"); 
-                this.userData.uuid = userData['uuid'];
-                console.log("####3"); 
-                this.userData.apiToken = userData['token'];
-                }
+                UnifiedObservable.getInstance().userData['name'] = userData['name'] ? userData['name'] : '[unknown]';
+                UnifiedObservable.getInstance().userData['uuid'] = userData['uuid'] ? userData['uuid'] : '[unknown]';
+                UnifiedObservable.getInstance().userData['apiToken'] = userData['token'] ? userData['token'] : '[unknown]';
                 callback((response.statusCode == 200 && userData['token'] != undefined) ? true : false);
             });
         }
@@ -292,7 +276,7 @@ export class UnifiedObservable extends Observable {
     }
 
     //UNCOMMENT THIS FOR LOGIN VIA API
-   /*  private encryptLoginData(loginData: any): string {
+     /* private encryptLoginData(loginData: any): string {
         let encryptedHex: string = KJUR.crypto.Cipher.encrypt(
             JSON.stringify(loginData),
             this._pubKey,
