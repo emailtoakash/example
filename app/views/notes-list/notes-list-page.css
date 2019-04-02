@@ -1,11 +1,14 @@
 .roundbutton {
     background-color: rgb(45, 183, 230);
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     font-size: 48px;
-    margin-bottom: 100px;
+    margin-bottom: 1px;
     margin-right: 100px;
     horizontal-align: right;
+    position: absolute;
+    botton:0;
     color: white;
+
 }

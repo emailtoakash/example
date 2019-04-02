@@ -3,6 +3,7 @@ import { ObservableArray } from "tns-core-modules/data/observable-array";
 import { TokenModel, RadAutoCompleteTextView } from "nativescript-ui-autocomplete";
 import { SelectedPageService } from "~/shared/selected-page-service";
 import { request } from 'tns-core-modules/http';
+import { UnifiedObservable } from "~/shared/shared-data-structures";
 
 export class NewNoteViewModel extends Observable {
     private autocomplete: RadAutoCompleteTextView;
@@ -17,7 +18,7 @@ export class NewNoteViewModel extends Observable {
                 request({
                     url: "https://trial.assetti.pro/api/v2/properties?locale=EN&limit=5&offset=0",
                     method: "GET",
-                    headers: { "Content-Type": "application/json" , "Authorization" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBa2FzaC5TaW5naGFsQHN0dWRlbnQubHV0LmZpIiwiYXVkIjoiNEIxRDQ2OTAtQkQ5Qy00N0RGLUEzM0MtMTMzRUUyNzBEQTM5IiwiaWF0IjoxNTUyNzI3NzQyfQ.QRLfDQvvGT9wcWlelG4vPl5YcCaaJZbirBNzCZDYidQ"},
+                    headers: { "Content-Type": "application/json" , "Authorization" : UnifiedObservable.getInstance().userData['apiToken']},
                 }).then((response) => {
                     properties = response.content.toJSON();
                     const items: Array<TokenModel> = new Array();
@@ -59,7 +60,7 @@ export class NewNoteViewModel extends Observable {
             request({
                 url: "https://trial.assetti.pro/api/v2/properties?locale=EN&limit=5&offset=0",
                 method: "GET",
-                headers: { "Content-Type": "application/json" , "Authorization" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBa2FzaC5TaW5naGFsQHN0dWRlbnQubHV0LmZpIiwiYXVkIjoiNEIxRDQ2OTAtQkQ5Qy00N0RGLUEzM0MtMTMzRUUyNzBEQTM5IiwiaWF0IjoxNTUyNzI3NzQyfQ.QRLfDQvvGT9wcWlelG4vPl5YcCaaJZbirBNzCZDYidQ"},
+                headers: { "Content-Type": "application/json" , "Authorization" : UnifiedObservable.getInstance().userData['apiToken']},
             }).then((response) => {
                 properties = response.content.toJSON();
                 // console.log(response);

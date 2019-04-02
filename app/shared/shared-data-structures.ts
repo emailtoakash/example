@@ -44,9 +44,9 @@ export class Note extends Observable {
                 text: this.stripHtmlTags(comment['comment'])
             })
         });
-        /*UnifiedObservable.getInstance().getProperty(apiData['propertyUuid'], function(propertyData: object) {
+        /* UnifiedObservable.getInstance().getProperty(apiData['propertyUuid'], function(propertyData: object) {
             this.set('property', propertyData['name'] ? propertyData['name'] : '[undefined]');
-        });*/
+        }); */
     }
 
     private stripHtmlTags(text: string): string {
@@ -106,7 +106,7 @@ export class UnifiedObservable extends Observable {
     private static _instance: UnifiedObservable = new UnifiedObservable();
 
     // user data and notes stored here
-    public userData: object = { email: '', password: '' };
+    public userData: object = { email: '', password: '', name: '', uuid: '', apiToken: '',locale: ''};
     public notesList: Array<Note> = new Array<Note>();
 
     private currentNote: Note;
@@ -116,8 +116,8 @@ export class UnifiedObservable extends Observable {
     private host: string = 'https://trial.assetti.pro';
 
     // public key for auth api
-    /*
-    private _pubKey = KEYUTIL.getKey(`
+    
+  /*   private _pubKey = KEYUTIL.getKey(`
         -----BEGIN PUBLIC KEY-----
         MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAg9OFocUU9KHxweyGFrBw
         +PxDzTSvIFjcgvsF7tpiU4PcsFSazeETfWUGqY2CIYCKDUJSjHyyovvvpki9R21+
@@ -127,7 +127,7 @@ export class UnifiedObservable extends Observable {
         CDC59yJhIUm21MqKJqxISuZHDg+spr+VqkbajtD5DfwQgwmxZixVmZQfYrJnRycM
         tQIDAQAB
         -----END PUBLIC KEY-----`
-    );*/
+    ); */
 
     constructor() {
         super();
@@ -159,8 +159,12 @@ export class UnifiedObservable extends Observable {
         //console.log('userLogin(' + this.userData['email'] + ',' + this.userData['password'] + ')');
         this.userData['locale'] = 'EN';
         this.userData['name'] = 'John Smith';
+        this.userData['email'] = 'john@assetti.fi'
+        this.userData['uuid'] = 'xyz'
+        //this.userData.name ='John Smith';
+        //this.userData.email ='John Smith';
         if (bypass) {
-            this.userData['apiToken'] = ''; // <- API token here when bypassing
+            this.userData['apiToken'] = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBa2FzaC5TaW5naGFsQHN0dWRlbnQubHV0LmZpIiwiYXVkIjoiNEIxRDQ2OTAtQkQ5Qy00N0RGLUEzM0MtMTMzRUUyNzBEQTM5IiwiaWF0IjoxNTU0MTkxMTE3fQ.NESl83lLOP8K9AZkHXQ10V19PsuR7Wl6YkEJuQvmpOw'; // <- API token here when bypassing
             callback(true);
         } else {
             const loginData = {
@@ -173,10 +177,24 @@ export class UnifiedObservable extends Observable {
                 //data: this.encryptLoginData(loginData)
             };
             this.apiRequest('/api/v2/login', 'POST', null, bodyContent, function(response: HttpResponse, userData: object) {
+                const r = response.content.toJSON();
                 console.log('response.statusCode = ' + response.statusCode);
-                this.userData['name'] = userData['name'] ? userData['name'] : '[unknown]';
+                console.log("####1"+ userData['name']); 
+                /* this.userData['name'] = userData['name'] ? userData['name'] : '[unknown]';
+                console.log("####2"); 
                 this.userData['uuid'] = userData['uuid'] ? userData['uuid'] : '[unknown]';
-                this.userData['apiToken'] = userData['token'] ? userData['token'] : '[unknown]';
+                console.log("####3"); 
+                this.userData['apiToken'] = userData['token'] ? userData['token'] : '[unknown]'; */
+                //console.log(userData['token'] + "####" + r.token); 
+                if(response.statusCode == 200)
+                {
+                console.log("####2"); 
+                this.userData.name = userData['name'] ;
+                console.log("####2"); 
+                this.userData.uuid = userData['uuid'];
+                console.log("####3"); 
+                this.userData.apiToken = userData['token'];
+                }
                 callback((response.statusCode == 200 && userData['token'] != undefined) ? true : false);
             });
         }
@@ -193,6 +211,7 @@ export class UnifiedObservable extends Observable {
         }
         headers['Content-Type'] = 'application/json';
         headers['Authorization'] = this.userData['apiToken'];
+        console.log(this.userData['apiToken']);
         headers['Accept'] = 'application/json';
         request({
             url: this.host + url,
@@ -265,13 +284,13 @@ export class UnifiedObservable extends Observable {
             Array.from(jsonData as Array<object>).forEach((noteData: object) => {
                 notes.push(new Note(noteData));
             });
-            UnifiedObservable.getInstance().set('notesList', notes);
+            UnifiedObservable.getInstance().set('notesList', notes.reverse());
             callback(UnifiedObservable.getInstance().notesList.slice(offset, count));
         });
     }
 
-    /*
-    private encryptLoginData(loginData: any): string {
+    
+ /*    private encryptLoginData(loginData: any): string {
         let encryptedHex: string = KJUR.crypto.Cipher.encrypt(
             JSON.stringify(loginData),
             this._pubKey,
@@ -285,7 +304,7 @@ export class UnifiedObservable extends Observable {
             encryptedRaw += String.fromCharCode(parseInt(encryptedHex.substr(i * 2, 2), 16));
         }
         return base64.encode(encryptedRaw);
-    }*/
+    } */
 
 
 }

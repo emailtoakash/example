@@ -13,6 +13,7 @@ import { isIOS } from "tns-core-modules/platform";
 import { ObservableArray } from "tns-core-modules/data/observable-array";
 import * as fs from "tns-core-modules/file-system";
 import {ImageSource} from "tns-core-modules/image-source";
+import { UnifiedObservable } from "~/shared/shared-data-structures";
 
 let page, currentTab, nextButton;
 let count:boolean = false;
@@ -97,7 +98,7 @@ export function changeTab(args) {
             request({
                 url: "https://trial.assetti.pro/api/v2/notes?locale=EN&limit=2&offset=0",
                 method: "POST",
-                headers: { "Content-Type": "application/json" , "Authorization" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBa2FzaC5TaW5naGFsQHN0dWRlbnQubHV0LmZpIiwiYXVkIjoiNEIxRDQ2OTAtQkQ5Qy00N0RGLUEzM0MtMTMzRUUyNzBEQTM5IiwiaWF0IjoxNTUyNzI3NzQyfQ.QRLfDQvvGT9wcWlelG4vPl5YcCaaJZbirBNzCZDYidQ" },
+                headers: { "Content-Type": "application/json" , "Authorization" : UnifiedObservable.getInstance().userData['apiToken'] },
                 content: JSON.stringify({
                     title: title,
                     comment: desc
@@ -156,7 +157,7 @@ function start_upload(should_fail, isMulti, UUID) {
         method: "POST",
         headers: {
             "Content-Type": "application/octet-stream",
-            "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBa2FzaC5TaW5naGFsQHN0dWRlbnQubHV0LmZpIiwiYXVkIjoiNEIxRDQ2OTAtQkQ5Qy00N0RGLUEzM0MtMTMzRUUyNzBEQTM5IiwiaWF0IjoxNTUyNzI3NzQyfQ.QRLfDQvvGT9wcWlelG4vPl5YcCaaJZbirBNzCZDYidQ",
+            "Authorization": UnifiedObservable.getInstance().userData['apiToken'],
             "File-Name": name
         },
         description: description,

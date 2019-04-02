@@ -4,7 +4,7 @@
         <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
     </ActionBar>
-
+<GridLayout>
     <ListView items="{{ notesList }}" itemTap="onNotesListItemTap" separatorColor="gray" rowHeight="auto" id="listView">
         <ListView.itemTemplate>
             <DockLayout stretchLastChild="false" class="list-view-item p-15" id="{{ uuid }}">
@@ -20,5 +20,11 @@
             </DockLayout >
         </ListView.itemTemplate>
     </ListView>
+
+       
+     <!--  <Button tap="goToAdd" text="&#xf067;" class="roundbutton fa"/> -->
+
+   
+    </GridLayout>
 
 </Page>

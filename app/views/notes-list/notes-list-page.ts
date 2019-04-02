@@ -5,7 +5,7 @@ import { EventData } from "tns-core-modules/data/observable";
 import { NavigatedData, Page } from "tns-core-modules/ui/page";
 import { SelectedPageService } from "~/shared/selected-page-service";
 import { ItemEventData } from "tns-core-modules/ui/list-view";
-
+import { topmost } from "tns-core-modules/ui/frame";
 // The actual view model for the view
 import { UnifiedObservable } from "~/shared/shared-data-structures";
 
@@ -31,4 +31,13 @@ export function onNotesListItemTap(args: ItemEventData) {
 export function onDrawerButtonTap(args: EventData) {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
+}
+
+export function goToAdd() {
+    topmost().navigate({
+        moduleName: "views/newnote/newnote-page",
+        transition: {
+            name: "fade"
+        }
+    });
 }
