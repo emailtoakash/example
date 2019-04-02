@@ -1,13 +1,48 @@
-<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page class="page" navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
 
+
+    <ActionBar title="Notes and tasks" class="action-bar">
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <ActionItem tap="searchBarToggle">
+            <Label class="" style="padding:20px;font-size:30px;color:white;font-family:FontAwesome;vertical-align: top;" text="&#xf002;"></Label>
+        </ActionItem>
+    </ActionBar>
+
+    <StackLayout class="page-content">
+        <SearchBar loaded="searchbarLoaded" visibility="{{ showSearch ? 'visible' : 'collapsed' }}" id="searchBar" hint="Search by typing here..." text="{{sbText}}" clear="onSearchClear" submit="onSearchSubmit" />
+        <!--<ActivityIndicator #activityIndicator busy="true" (busyChange)="onBusyChanged($event)" width="20%" height="20%" class="activity-indicator"></ActivityIndicator> textChange="onSearchTextChanged"-->
+
+        <ListView items="{{ filteredNotes }}" itemTap="onItemTap" loaded="{{ onListViewLoaded }}" separatorColor="gray" rowHeight="auto" id="listView">
+            <ListView.itemTemplate>-->
+                <!-- &#xf002; The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
+                <DockLayout stretchLastChild="false" class="list-view-item p-15">
+                    <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>
+                    <StackLayout orientation="vertical" class="p-l-15 p-r-15">
+                        <Label class="font-weight-bold" text="{{ title || 'undefined'}}" textWrap="true"></Label>
+                        <Label text="{{ createdBy || 'undefined' }}" textWrap="true"></Label>
+                    </StackLayout>
+                    <Label dock="right" text="[??]"></Label>
+                </DockLayout >
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout >
+
+
+
+
+
+
+    <!--
     <ActionBar title="Notes" class="action-bar">
         <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
     </ActionBar>
 
     <ListView items="{{ notes }}" itemTap="onItemTap" loaded="{{ onListViewLoaded }}" separatorColor="gray" rowHeight="auto" id="listView">
-        <ListView.itemTemplate>
-            <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
+        <ListView.itemTemplate>-->
+    <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->    <!--
             <DockLayout stretchLastChild="false" class="list-view-item p-15">
                 <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>
                 <StackLayout orientation="vertical" class="p-l-15 p-r-15">
@@ -18,7 +53,7 @@
             </DockLayout >
         </ListView.itemTemplate>
     </ListView>
-
+-->
     <!--
     tabview commented out here for the time being (not needed)
     <TabView id="tabViewContainer">

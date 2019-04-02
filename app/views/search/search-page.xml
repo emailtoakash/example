@@ -1,13 +1,30 @@
-<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page navigatingTo="onNavigatingTo" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar title="Search" class="action-bar">
         <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
         <ActionItem icon="res://navigation/menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
     </ActionBar>
 
-    <GridLayout class="page-content">
+    <StackLayout class="page-content">
+        <SearchBar id="searchBar" hint="Search notes by typing here..." text="{{sbText}}" clear="onClear" submit="onSubmit" />
         <Label class="page-icon fa" text="&#xf002;"></Label>
-        <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-    </GridLayout>
+        <Label class="page-placeholder" text="No results to show :C"></Label>
+
+
+        <ListView items="{{ notes }}" itemTap="onItemTap" loaded="{{ onListViewLoaded }}" separatorColor="gray" rowHeight="auto" id="listView" style="">
+            <ListView.itemTemplate>
+                <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
+                <DockLayout stretchLastChild="false" class="list-view-item p-15">
+                    <Image dock="left" src="~/images/assetti.jpg" height="40" stretch="aspectFit" class="img-rounded"></Image>
+                    <StackLayout orientation="vertical" class="p-l-15 p-r-15">
+                        <Label class="font-weight-bold" text="{{ title || 'undefined'}}" textWrap="true"></Label>
+                        <Label text="{{ createdBy || 'undefined' }}" textWrap="true"></Label>
+                    </StackLayout>
+                    <Label dock="right" text="[??]"></Label>
+                </DockLayout >
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout >
 
 </Page>
